@@ -1,13 +1,17 @@
 import NavBarAdmin from "components/NavBarAdmin";
 import VolonteerAdmin from "../admin/VolonteerAdmin";
-import TelegramAdmin from "../admin/TelegramAdmin";
 import UsersAdmin from "../admin/UsersAdmin";
+import {useLocation} from "react-router-dom";
 
 const AdminPage = () => {
+
+    const location = useLocation();
+    const isimpoverishedPage = location.pathname === "/admin#impoverished";
+
   return (
     <div>
       <NavBarAdmin />
-      <TelegramAdmin />
+        {isimpoverishedPage ? <UsersAdmin/> : <VolonteerAdmin/>}
     </div>
   );
 };

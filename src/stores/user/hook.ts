@@ -15,6 +15,7 @@ export function useUser() {
       setUserAuth(true);
       setUserRole(UserRole.ADMIN);
       localStorage.setItem("isAuth", "true");
+      localStorage.setItem("role", UserRole.ADMIN.toString());
     } catch (e) {
       throw e;
     }
@@ -26,6 +27,7 @@ export function useUser() {
       setUserAuth(true);
       setUserRole(UserRole.USER);
       localStorage.setItem("isAuth", "true");
+      localStorage.setItem("role", UserRole.USER.toString());
     } catch (e) {
       throw e;
     }
@@ -35,6 +37,7 @@ export function useUser() {
     setUserAuth(false);
     setUserRole(null);
     localStorage.removeItem("isAuth");
+    localStorage.removeItem("role");
   }, []);
 
   return { user, authUser, logout, authAdmin };

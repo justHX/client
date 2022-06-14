@@ -53,7 +53,7 @@ const Auth = observer(() => {
                   className="radio-button"
                   defaultChecked
                 />{" "}
-                Я бабка
+                Я пользователь
               </div>
               <div className="radio-button-background d-inline-block mt-3 m-4">
                 <Radio value="VolonteerAuth" className="radio-button" /> Я
