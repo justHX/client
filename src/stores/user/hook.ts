@@ -1,7 +1,7 @@
 import { useStore } from "effector-react";
 import { useCallback } from "react";
 
-import { API } from "../../API";
+import { API } from "API";
 
 import { $user, setUserAuth } from "./store";
 
@@ -12,11 +12,15 @@ export function useUser() {
     try {
       await API.post("/Login", { email, pass });
       setUserAuth(true);
-    } catch (e) {}
+      localStorage.set("isAuth", "true");
+    } catch (e) {
+      throw e;
+    }
   }, []);
 
   const logout = useCallback(() => {
     setUserAuth(false);
+    localStorage.removeItem("isAuth");
   }, []);
 
   return { user, authUser, logout };

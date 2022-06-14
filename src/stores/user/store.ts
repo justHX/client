@@ -7,5 +7,5 @@ const defaultState: IUser = { isAuth: false };
 export const $user = createStore<IUser>(defaultState);
 
 export const { setUserAuth } = createApi($user, {
-  setUserAuth: (_: IUser, value: boolean) => ({ isAuth: value }),
+  setUserAuth: (state, value: boolean) => ({ ...state, isAuth: value }),
 });

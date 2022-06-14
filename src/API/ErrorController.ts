@@ -1,4 +1,4 @@
-import { ErrorEntities } from "../constants";
+import { ErrorEntities } from "const";
 
 import type { ErrorBoundary } from "./types";
 

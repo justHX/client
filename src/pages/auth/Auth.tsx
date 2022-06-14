@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Card, Container, Row } from "react-bootstrap";
 import { Radio, RadioGroup } from "react-radio-group";
+import { observer } from "mobx-react-lite";
+
 import ImpoverishedAuth from "./ImpoverishedAuth";
 import AdminAuth from "./AdminAuth";
 import VolonteerAuth from "./VolonteerAuth";
-import { observer } from "mobx-react-lite";
 
 const Auth = observer(() => {
   const [personRoles, setPersonRoles] = useState(<ImpoverishedAuth />);

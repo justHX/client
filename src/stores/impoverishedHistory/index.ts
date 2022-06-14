@@ -3,3 +3,4 @@ export type {
   ImpoverishedHistoryFullItem,
   SubTask,
 } from "./types";
+export { useImpoverishedHistory } from "./hook";

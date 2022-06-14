@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 
-import { APP_URI, ErrorEntities } from "../constants";
+import { APP_URI, ErrorEntities } from "const";
 
 import { ErrorController } from "./ErrorController";
 import { APIController } from "./APIController";

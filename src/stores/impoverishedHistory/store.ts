@@ -15,17 +15,13 @@ const defaultState: ImpoverishedHistory = { list: [], item: null };
 export const $impoverishedHistory =
   createStore<ImpoverishedHistory>(defaultState);
 
-export const { setList, setItem, resetItem } = createApi($impoverishedHistory, {
-  setList: (
-    state: ImpoverishedHistory,
-    value: ImpoverishedHistoryListItem[]
-  ) => ({
+export const { setList, setItem } = createApi($impoverishedHistory, {
+  setList: (state, value: ImpoverishedHistoryListItem[]) => ({
     ...state,
     list: value,
   }),
-  setItem: (
-    state: ImpoverishedHistory,
-    value: Maybe<ImpoverishedHistoryFullItem>
-  ) => ({ ...state, item: value }),
-  resetItem: (state: ImpoverishedHistory) => ({ ...state, item: null }),
+  setItem: (state, value: Maybe<ImpoverishedHistoryFullItem>) => ({
+    ...state,
+    item: value,
+  }),
 });

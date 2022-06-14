@@ -1,10 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { Context } from "../../index";
 import { useNavigate } from "react-router-dom";
-import { registerVol } from "../../actions/userApi";
-import { ROUTES } from "../../constants/Routes";
-import { User } from "../../data/Users";
+
+import { registerVol } from "actions/userApi";
+import { ROUTES } from "const";
 
 const VolonteerAuth = () => {
   const [region, setRegion] = useState("");
@@ -18,13 +17,11 @@ const VolonteerAuth = () => {
   const [expirience, setExpirience] = useState("");
   const [phone, setPhone] = useState("");
 
-  const { user } = useContext(Context);
-
   const navigate = useNavigate();
 
   const click = async () => {
     try {
-      let dataServer = await registerVol(
+      await registerVol(
         region,
         city,
         district,
@@ -36,14 +33,9 @@ const VolonteerAuth = () => {
         expirience,
         phone
       );
-      console.log(dataServer);
-      user.user = dataServer?.data as User;
-      user.isAuth = true;
       navigate(ROUTES.VOLONTEER_ROUTE, { replace: true });
     } catch (e) {
-      user.isAuth = true;
-      navigate(ROUTES.VOLONTEER_ROUTE, { replace: true });
-      //alert(e.response.data.message)
+      console.error(e);
     }
   };
 
