@@ -36,8 +36,8 @@ const VolonteerAuth = () => {
         expirience,
         phone
       );
-
-      user.user = dataServer as User;
+      console.log(dataServer);
+      user.user = dataServer?.data as User;
       user.isAuth = true;
       navigate(ROUTES.VOLONTEER_ROUTE, { replace: true });
     } catch (e) {

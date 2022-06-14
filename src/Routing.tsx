@@ -33,25 +33,23 @@ const Routing = () => {
       <Route
         path={ROUTES.ADMIN_ROUTE}
         element={
-          <ProtectedPage>
+
             <AdminPage />
-          </ProtectedPage>
+
         }
       />
       <Route
         path={ROUTES.VOLONTEER_ROUTE}
         element={
-          <ProtectedPage>
             <VolonteerPage />
-          </ProtectedPage>
         }
       />
       <Route
         path={ROUTES.IMPROVERISHED_ROUTE}
         element={
-          <ProtectedPage>
+
             <ImpoverishedPage />
-          </ProtectedPage>
+
         }
       />
       <Route path={ROUTES.LOGIN_ROUTE} element={<Auth />} />

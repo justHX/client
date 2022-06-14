@@ -5,6 +5,7 @@ import { Context } from "../../index";
 import { useNavigate } from "react-router-dom";
 
 import { User } from "../../data/Users";
+import {ROUTES} from "../../constants";
 
 const AdminAuth = () => {
   const [email, setEmail] = useState("");
@@ -17,17 +18,17 @@ const AdminAuth = () => {
   const click = async () => {
     try {
       let dataServer: any = await loginAdmin(email, password);
-
-      if ("id" in dataServer.data) {
+console.log(dataServer);
+      if ("id" in dataServer) {
         user.user = dataServer as User;
         user.isAuth = true;
-        navigate("/admin", { replace: true });
+        navigate(ROUTES.ADMIN_ROUTE, { replace: true });
         console.log(user);
       } else {
         alert(dataServer.data.text);
       }
     } catch (e: any) {
-      alert(e.response.data.message);
+      alert("Ошибка!");
     }
   };
 

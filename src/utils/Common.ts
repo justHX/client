@@ -6,7 +6,7 @@ export function buildURIString(
 ) {
   if (!host) throw new Error("Host is not provided");
 
-  const APIString = `http${shouldUseSSL && "s"}//${host}`;
+  const APIString = `http${shouldUseSSL && ""}://${host}`;
 
   if (!isProduction) {
     if (!port) throw new Error("Port is not provided");

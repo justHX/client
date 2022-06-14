@@ -1,5 +1,12 @@
+import React from 'react';
+import NavBarImpov from "../../components/NavBarImpov";
+
 const ImpoverishedPage = () => {
-  return <div></div>;
+    return (
+        <div>
+          <NavBarImpov/>
+        </div>
+    );
 };
 
 export default ImpoverishedPage;
