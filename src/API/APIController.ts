@@ -11,19 +11,19 @@ export abstract class APIController<T extends APIInstance>
     this.errorBoundary = errorBoundary;
   }
 
-  public async get<T, P = any>(uri: string, params?: P): Promise<Maybe<T>> {
+  public async get<T, P = any>(uri: string, params?: P): Promise<any> {
     throw new Error("Method for override");
   }
 
-  public async post<T, P = any>(uri: string, params?: P): Promise<Maybe<T>> {
+  public async post<T, P = any>(uri: string, params?: P): Promise<any> {
     throw new Error("Method for override");
   }
 
-  public async put<T, P = any>(uri: string, params?: P): Promise<Maybe<T>> {
+  public async put<T, P = any>(uri: string, params?: P): Promise<any> {
     throw new Error("Method for override");
   }
 
-  public async delete<T, P = any>(uri: string, params?: P): Promise<Maybe<T>> {
+  public async delete<T, P = any>(uri: string, params?: P): Promise<any> {
     throw new Error("Method for override");
   }
 }
