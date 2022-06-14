@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react";
+import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { SecurePage } from "components";
@@ -11,36 +11,37 @@ import Welcome from "pages/Welcome";
 
 import { ROUTES } from "const/Routes";
 
-import { useUser } from "stores";
+import { useUser, UserRole } from "stores";
 
-function generateSecurePage(isAuth: boolean, redirectUrl: string): FC<any> {
-  return ({ children }) => (
-    <SecurePage isAuth={isAuth} redirect={redirectUrl}>
-      {children}
-    </SecurePage>
-  );
-}
-
-const Routing = () => {
+const Routing: FC = () => {
   const { user } = useUser();
-
-  const ProtectedPage = useMemo(
-    () => generateSecurePage(user.isAuth, ROUTES.LOGIN_ROUTE),
-    [user.isAuth]
-  );
 
   return (
     <Routes>
       <Route
         path={ROUTES.ADMIN_ROUTE}
         element={
-          <ProtectedPage>
+          <SecurePage
+            isAuth={user.isAuth && user.role === UserRole.ADMIN}
+            redirect={ROUTES.LOGIN_ROUTE}
+          >
             <AdminPage />
-          </ProtectedPage>
+          </SecurePage>
         }
       />
+      <Route
+        path={ROUTES.IMPROVERISHED_ROUTE}
+        element={
+          <SecurePage
+            isAuth={user.isAuth && user.role === UserRole.USER}
+            redirect={ROUTES.LOGIN_ROUTE}
+          >
+            <ImpoverishedPage />
+          </SecurePage>
+        }
+      />
+
       <Route path={ROUTES.VOLONTEER_ROUTE} element={<VolonteerPage />} />
-      <Route path={ROUTES.IMPROVERISHED_ROUTE} element={<ImpoverishedPage />} />
       <Route path={ROUTES.LOGIN_ROUTE} element={<Auth />} />
       <Route path={ROUTES.REGISTRATION_ROUTE} element={<Auth />} />
       <Route path={ROUTES.WELCOME_ROUTE} element={<Welcome />} />

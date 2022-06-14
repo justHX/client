@@ -1,8 +1,11 @@
 import { createStore, createApi } from "effector";
 
-import type { IUser,UserRole } from "./types";
+import type { IUser, UserRole } from "./types";
 
-const defaultState: IUser = { isAuth: Boolean( localStorage.getItem("isAuth")), role: null };
+const defaultState: IUser = {
+  isAuth: Boolean(localStorage.getItem("isAuth")),
+  role: null,
+};
 
 export const $user = createStore<IUser>(defaultState);
 
