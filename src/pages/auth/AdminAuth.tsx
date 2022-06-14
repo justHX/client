@@ -12,11 +12,11 @@ const AdminAuth: FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const { authUser } = useUser();
+  const { authAdmin } = useUser();
 
   const click = async () => {
     try {
-      await authUser(email, password);
+      await authAdmin(email, password);
       navigate(ROUTES.ADMIN_ROUTE, { replace: true });
     } catch (e) {
       console.error(e);

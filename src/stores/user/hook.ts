@@ -1,18 +1,31 @@
-import { useStore } from "effector-react";
-import { useCallback } from "react";
+import {useStore} from "effector-react";
+import {useCallback} from "react";
 
-import { API } from "API";
+import {API} from "API";
 
-import { $user, setUserAuth } from "./store";
+import {$user, setUserAuth, setUserRole} from "./store";
+import {UserRole} from "./types";
 
 export function useUser() {
   const user = useStore($user);
 
-  const authUser = useCallback(async (email: string, pass: string) => {
+  const authAdmin = useCallback(async (email: string, password: string) => {
     try {
-      await API.post("/Login", { email, pass });
+      await API.post("/Login", { email, password });
       setUserAuth(true);
-      localStorage.set("isAuth", "true");
+      setUserRole(UserRole.ADMIN)
+      localStorage.setItem("isAuth", "true");
+    } catch (e) {
+      throw e;
+    }
+  }, []);
+
+  const authUser = useCallback(async (email: string, password: string) => {
+    try {
+      await API.post("/User/Login", { email, password });
+      setUserAuth(true);
+      setUserRole(UserRole.USER)
+      localStorage.setItem("isAuth", "true");
     } catch (e) {
       throw e;
     }
@@ -20,8 +33,9 @@ export function useUser() {
 
   const logout = useCallback(() => {
     setUserAuth(false);
+    setUserRole(null)
     localStorage.removeItem("isAuth");
   }, []);
 
-  return { user, authUser, logout };
+  return { user, authUser, logout, authAdmin };
 }
