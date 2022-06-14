@@ -1,35 +1,26 @@
+import { useState } from "react";
 import { Button, Form, NavLink } from "react-bootstrap";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import { ROUTES } from "../../constants";
-import {useLocation, useNavigate} from "react-router-dom";
-import {loginAdmin, loginImpov} from "../../actions/userApi";
-import {User} from "../../data/Users";
-import {useContext, useState} from "react";
-import {Context} from "../../index";
+
+import { useUser } from "../../stores";
 
 const ImpoverishedAuth = () => {
+  const navigate = useNavigate();
   const location = useLocation();
-  const isLoginPage = location.pathname === ROUTES.LOGIN_ROUTE;
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const { user } = useContext(Context);
-    const navigate = useNavigate();
 
-    const clickUser = async () => {
-        try {
-            let dataServer: any = await loginImpov(email, password);
-            console.log(dataServer);
-            if ("id" in dataServer) {
-                user.user = dataServer as User;
-                user.isAuth = true;
-                navigate(ROUTES.ADMIN_ROUTE, { replace: true });
-                console.log(user);
-            } else {
-                alert(dataServer.data.text);
-            }
-        } catch (e: any) {
-            alert("Ошибка!");
-        }
-    };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { authUser } = useUser();
+
+  const isLoginPage = location.pathname === ROUTES.LOGIN_ROUTE;
+
+  const clickUser = async () => {
+    await authUser(email, password);
+    navigate(ROUTES.ADMIN_ROUTE, { replace: true });
+  };
 
   return (
     <div>
@@ -39,10 +30,16 @@ const ImpoverishedAuth = () => {
       <Form className="d-flex flex-column">
         {isLoginPage ? (
           <div>
-            <Form.Control className="mt-3" placeholder="Введите логин"
-                          onChange={(e) => setEmail(e.target.value)}/>
-            <Form.Control className="mt-3" placeholder="Введите пароль"
-                          onChange={(e) => setPassword(e.target.value)}/>
+            <Form.Control
+              className="mt-3"
+              placeholder="Введите логин"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Form.Control
+              className="mt-3"
+              placeholder="Введите пароль"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
         ) : (
           <div>
