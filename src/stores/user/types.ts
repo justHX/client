@@ -1,9 +1,9 @@
 export interface IUser {
   isAuth: boolean;
-  role: Maybe<UserRole>
+  role: Maybe<UserRole>;
 }
 
-export enum UserRole{
+export enum UserRole {
   ADMIN,
-  USER
+  USER,
 }
