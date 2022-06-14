@@ -1,17 +1,17 @@
 import { FC, useMemo } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { SecurePage } from "./components";
+import { SecurePage } from "components";
 
-import AdminPage from "./pages/persons/AdminPage";
-import ImpoverishedPage from "./pages/persons/ImpoverishedPage";
-import VolonteerPage from "./pages/persons/VolonteerPage";
-import Auth from "./pages/auth/Auth";
-import Welcome from "./pages/Welcome";
+import AdminPage from "pages/persons/AdminPage";
+import ImpoverishedPage from "pages/persons/ImpoverishedPage";
+import VolonteerPage from "pages/persons/VolonteerPage";
+import Auth from "pages/auth/Auth";
+import Welcome from "pages/Welcome";
 
-import { ROUTES } from "./constants/Routes";
+import { ROUTES } from "const/Routes";
 
-import { useUser } from "./stores";
+import { useUser } from "stores";
 
 function generateSecurePage(isAuth: boolean, redirectUrl: string): FC<any> {
   return ({ children }) => (

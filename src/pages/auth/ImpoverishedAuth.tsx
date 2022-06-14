@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Button, Form, NavLink } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { ROUTES } from "../../constants";
+import { ROUTES } from "const";
 
-import { useUser } from "../../stores";
+import { useUser } from "stores";
 
 const ImpoverishedAuth = () => {
   const navigate = useNavigate();

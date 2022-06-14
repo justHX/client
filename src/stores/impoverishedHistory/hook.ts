@@ -1,7 +1,7 @@
 import { useStore } from "effector-react";
 import { useCallback } from "react";
 
-import { API } from "../../API";
+import { API } from "API";
 
 import { $impoverishedHistory, setItem, setList } from "./store";
 import type {

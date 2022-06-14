@@ -1,23 +1,19 @@
-import React from 'react';
-
 const FeedbackAdmin = () => {
-  const comm = [{
-    id: "d76sad7",
-    text: "dfsfs",
-    description: "87654",
-    isActive: true
-  },
+  const comm = [
     {
       id: "d76sad7",
       text: "dfsfs",
       description: "87654",
-      isActive: true
-    }]
-    return (
-        <div>
-
-        </div>
-    );
+      isActive: true,
+    },
+    {
+      id: "d76sad7",
+      text: "dfsfs",
+      description: "87654",
+      isActive: true,
+    },
+  ];
+  return <div></div>;
 };
 
 export default FeedbackAdmin;

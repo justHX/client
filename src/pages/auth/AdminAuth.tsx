@@ -2,9 +2,9 @@ import { useState, FC } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { ROUTES } from "../../constants";
+import { ROUTES } from "const";
 
-import { useUser } from "../../stores";
+import { useUser } from "stores";
 
 const AdminAuth: FC = () => {
   const navigate = useNavigate();
