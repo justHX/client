@@ -1,35 +1,15 @@
 import {NavBarAdmin} from "../../components";
 import {Table} from "react-bootstrap";
+import {useFeedback, useSettings} from "../../stores";
+import {useEffect} from "react";
 
 const FeedbackAdmin = () => {
-    const comm = [
-        {
-            id: "d76sad7",
-            text: "dfsfs",
-            sendDate: "87654",
-            botUser: {
-                id: "d3h32",
-                name: "hdakjshksa",
-                age: 12,
-                expirience: 4,
-            },
-            isRead: true,
-            isAnswer: true,
-        },
-        {
-            id: "d76sad7",
-            text: "dfsfs",
-            sendDate: "87654",
-            botUser: {
-                id: "d3h32",
-                name: "hdakjshksa",
-                age: 12,
-                expirience: 4,
-            },
-            isRead: true,
-            isAnswer: true,
-        },
-    ];
+    const {feedback, fetchFeedbackList} = useFeedback();
+
+    useEffect(() => {
+        fetchFeedbackList()
+    }, []);
+
     return (
         <div>
             <NavBarAdmin/>
@@ -50,7 +30,7 @@ const FeedbackAdmin = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {comm.map((item, i) => {
+                {feedback.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>
@@ -62,9 +42,8 @@ const FeedbackAdmin = () => {
                                 <td>{item.botUser.age}</td>
                                 <td>{item.botUser.expirience}</td>
                             </td>
-
                             <td>{item.isRead.toString()}</td>
-                            <td>{item.isAnswer.toString()}</td>
+                            <td>{item.isAnswered.toString()}</td>
                         </tr>
                     );
                 })}
