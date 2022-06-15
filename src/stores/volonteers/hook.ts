@@ -5,14 +5,14 @@ import { API } from "API";
 
 import { $volonteers, setList, setItem } from "./store";
 
-import type { VolonteerDetail, VolonteerShort } from "./types";
+import type { VolunteerDetail, VolunteerShort } from "./types";
 
 export function useVolonteers() {
   const volonteers = useStore($volonteers);
 
-  const fetchVolonteersList = useCallback(async () => {
+  const fetchVolunteersList = useCallback(async () => {
     try {
-      const result = await API.get<VolonteerShort[]>("/Admin/Volonteer/List");
+      const result = await API.get<VolunteerShort[]>("/Admin/Volunteer/List");
 
       setList(result?.data || []);
     } catch (e) {
@@ -20,11 +20,11 @@ export function useVolonteers() {
     }
   }, []);
 
-  const fetchVolonteerById = useCallback(async (id: string) => {
+  const fetchVolunteerById = useCallback(async (id: string) => {
     try {
       const params = { params: { id } };
-      const result = await API.get<VolonteerDetail>(
-        "/Admin/Volonteer/Info",
+      const result = await API.get<VolunteerDetail>(
+        "/Admin/Volunteer/Info",
         params
       );
 
@@ -34,36 +34,36 @@ export function useVolonteers() {
     }
   }, []);
 
-  const updateVolonteer = useCallback(
-    async (volonteer: VolonteerDetail) => {
+  const updateVolunteer = useCallback(
+    async (volonteer: VolunteerDetail) => {
       try {
-        await API.post("/Admin/Volonteer/Update", volonteer);
-        await fetchVolonteersList();
+        await API.post("/Admin/Volunteer/Update", volonteer);
+        await fetchVolunteersList();
       } catch (e) {
         console.error(e);
       }
     },
-    [fetchVolonteersList]
+    [fetchVolunteersList]
   );
 
-  const deleteVolonteer = useCallback(
+  const deleteVolunteer = useCallback(
     async (id: string) => {
       try {
         const params = { params: { id } };
-        await API.post("/Admin/Volonteer/Update", params);
-        await fetchVolonteersList();
+        await API.post("/Admin/Volunteer/Update", params);
+        await fetchVolunteersList();
       } catch (e) {
         console.error(e);
       }
     },
-    [fetchVolonteersList]
+    [fetchVolunteersList]
   );
 
   return {
     volonteers,
-    fetchVolonteersList,
-    fetchVolonteerById,
-    updateVolonteer,
-    deleteVolonteer,
+    fetchVolunteersList,
+    fetchVolunteerById,
+    updateVolunteer,
+    deleteVolunteer,
   };
 }

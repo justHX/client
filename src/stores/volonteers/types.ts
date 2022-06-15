@@ -1,4 +1,4 @@
-interface VolonteerBase {
+interface VolunteerBase {
   id: string;
   name: string;
   phone: string;
@@ -6,11 +6,11 @@ interface VolonteerBase {
   employedDate: string;
 }
 
-export interface VolonteerShort extends VolonteerBase {
+export interface VolunteerShort extends VolunteerBase {
   isRegister: boolean;
 }
 
-export interface VolonteerDetail extends VolonteerBase {
+export interface VolunteerDetail extends VolunteerBase {
   chatId: string;
   isCreate: boolean;
 }

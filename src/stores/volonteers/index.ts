@@ -1,2 +1,2 @@
-export type { VolonteerDetail, VolonteerShort } from "./types";
+export type { VolunteerDetail, VolunteerShort } from "./types";
 export { useVolonteers } from "./hook";

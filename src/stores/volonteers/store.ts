@@ -1,10 +1,10 @@
 import { createStore, createApi } from "effector";
 
-import type { VolonteerShort, VolonteerDetail } from "./types";
+import type { VolunteerShort, VolunteerDetail } from "./types";
 
 type VolonteersStore = {
-  list: VolonteerShort[];
-  item: Maybe<VolonteerDetail>;
+  list: VolunteerShort[];
+  item: Maybe<VolunteerDetail>;
 };
 
 const defaultState: VolonteersStore = { list: [], item: null };
@@ -12,8 +12,8 @@ const defaultState: VolonteersStore = { list: [], item: null };
 export const $volonteers = createStore(defaultState);
 
 export const { setList, setItem } = createApi($volonteers, {
-  setList: (state, value: VolonteerShort[]) => ({ ...state, list: value }),
-  setItem: (state, value: Maybe<VolonteerDetail>) => ({
+  setList: (state, value: VolunteerShort[]) => ({ ...state, list: value }),
+  setItem: (state, value: Maybe<VolunteerDetail>) => ({
     ...state,
     item: value,
   }),
