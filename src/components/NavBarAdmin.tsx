@@ -1,7 +1,32 @@
-import {Container, Nav, Navbar} from "react-bootstrap";
+import { useMemo } from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
+
+import { ROUTES } from "const";
+
+interface Route {
+  route: ROUTES;
+  title: string;
+  isActive?: boolean;
+}
+
+const routes: Route[] = [
+  { route: ROUTES.ADMIN_ROUTE_USER, title: "Пользователи" },
+  { route: ROUTES.ADMIN_ROUTE_VOLONTEER, title: "Волонтеры" },
+  { route: ROUTES.ADMIN_ROUTE_SETTINGS, title: "Админы" },
+  { route: ROUTES.ADMIN_ROUTE_FEEDBACK, title: "Обратная связь" },
+  { route: ROUTES.ADMIN_ROUTE_TELEGRAMM, title: "Telegram бот" },
+];
 
 const NavBarAdmin = () => {
+  const { pathname } = useLocation();
 
+  const paths = useMemo(() => {
+    return routes.map((item) => ({
+      ...item,
+      isActive: item.route === pathname,
+    }));
+  }, [pathname]);
 
   return (
     <div>
@@ -9,11 +34,14 @@ const NavBarAdmin = () => {
         <Container>
           <Navbar.Brand>Панель администратора</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/admin/user">Пользователи</Nav.Link>
-            <Nav.Link href="/admin/volonteer">Волонтеры</Nav.Link>
-            <Nav.Link href="/admin/settings">Админы</Nav.Link>
-            <Nav.Link href="/admin/feedback">Обратная связь</Nav.Link>
-            <Nav.Link href="/admin/telegram">Telegram бот</Nav.Link>
+            {paths.map(({ route, isActive, title }) => (
+              <Nav.Link
+                style={isActive ? { color: "white" } : undefined}
+                href={route}
+              >
+                {title}
+              </Nav.Link>
+            ))}
           </Nav>
         </Container>
       </Navbar>
