@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ROUTES } from "const";
 
 import { useUser } from "stores";
+import {registerImpov} from "../../actions/userApi";
 
 const ImpoverishedAuth = () => {
   const navigate = useNavigate();
@@ -13,14 +14,35 @@ const ImpoverishedAuth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+    const [name, setName] = useState("");
+    const [age, setAge] = useState("");
+    const [phone, setPhone] = useState("");
+    const [district, setDistrict] = useState("");
+    const [street, setStreet] = useState("");
+    const [house, setHouse] = useState("");
+    const [flat, setFlat] = useState("");
+
   const { authUser } = useUser();
 
   const isLoginPage = location.pathname === ROUTES.LOGIN_ROUTE;
 
   const clickUser = async () => {
     await authUser(email, password);
-    navigate(ROUTES.ADMIN_ROUTE, { replace: true });
+    navigate(ROUTES.IMPROVERISHED_ROUTE, { replace: true });
   };
+
+    const registerUser = async () => {
+        await registerImpov(
+            name,
+            age,
+            phone,
+            district,
+            street,
+            house,
+            flat
+        );
+        navigate(ROUTES.LOGIN_ROUTE, { replace: true });
+    };
 
   return (
     <div>
@@ -38,17 +60,26 @@ const ImpoverishedAuth = () => {
             <Form.Control
               className="mt-3"
               placeholder="Введите пароль"
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
         ) : (
           <div>
-            <Form.Control className="mt-3" placeholder="Введите имя" />
-            <Form.Control className="mt-3" placeholder="Введите возраст" />
-            <Form.Control className="mt-3" placeholder="Введите район" />
-            <Form.Control className="mt-3" placeholder="Введите улицу" />
-            <Form.Control className="mt-3" placeholder="Введите дом" />
-            <Form.Control className="mt-3" placeholder="Введите квартиру" />
+            <Form.Control className="mt-3" placeholder="Введите имя"
+                          onChange={(e) => setName(e.target.value)}/>
+            <Form.Control className="mt-3" placeholder="Введите возраст"
+                          onChange={(e) => setAge(e.target.value)}/>
+              <Form.Control className="mt-3" placeholder="Введите телефон"
+                            onChange={(e) => setPhone(e.target.value)}/>
+            <Form.Control className="mt-3" placeholder="Введите район"
+                          onChange={(e) => setDistrict(e.target.value)}/>
+            <Form.Control className="mt-3" placeholder="Введите улицу"
+                          onChange={(e) => setStreet(e.target.value)}/>
+            <Form.Control className="mt-3" placeholder="Введите дом"
+                          onChange={(e) => setHouse(e.target.value)}/>
+            <Form.Control className="mt-3" placeholder="Введите квартиру"
+                          onChange={(e) => setFlat(e.target.value)}/>
           </div>
         )}
 
@@ -56,7 +87,7 @@ const ImpoverishedAuth = () => {
           style={{ width: 150 }}
           className="m-auto mt-4"
           variant={"outline-primary"}
-          onClick={clickUser}
+          onClick={isLoginPage ? clickUser : registerUser}
         >
           {isLoginPage ? "Войти" : "Регистрация"}
         </Button>

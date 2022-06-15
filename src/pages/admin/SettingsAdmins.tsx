@@ -1,24 +1,22 @@
-import {Table} from "react-bootstrap";
+import React from 'react';
 import {NavBarAdmin} from "../../components";
+import {Table} from "react-bootstrap";
 
-const TelegramAdmin = () => {
-
-
+const SettingsAdmins = () => {
     const comm = [
         {
             id: "d76sad7",
-            text: "dfsfs",
-            description: "87654",
-            isActive: true,
+            email: "dfsfs",
+            fullName: "87654",
+
         },
         {
             id: "d76sad7",
-            text: "dfsfs",
-            description: "87654",
-            isActive: true,
-        },
-    ];
+            email: "dfsfs",
+            fullName: "87654",
 
+        }
+    ];
     return (
         <div>
             <NavBarAdmin/>
@@ -26,9 +24,8 @@ const TelegramAdmin = () => {
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Text</th>
-                    <th>Description</th>
-                    <th>Active</th>
+                    <th>Email</th>
+                    <th>Full Name</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,9 +33,8 @@ const TelegramAdmin = () => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>
-                            <td>{item.text}</td>
-                            <td>{item.description}</td>
-                            <td>{item.isActive.toString()}</td>
+                            <td>{item.email}</td>
+                            <td>{item.fullName}</td>
                         </tr>
                     );
                 })}
@@ -48,4 +44,4 @@ const TelegramAdmin = () => {
     );
 };
 
-export default TelegramAdmin;
+export default SettingsAdmins;

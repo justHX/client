@@ -1,4 +1,5 @@
 import { Table } from "react-bootstrap";
+import {NavBarAdmin} from "../../components";
 
 const UsersAdmin = () => {
   const comm = [
@@ -20,6 +21,7 @@ const UsersAdmin = () => {
 
   return (
     <div>
+      <NavBarAdmin/>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
