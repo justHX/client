@@ -4,7 +4,7 @@ import type { IUser, UserRole } from "./types";
 
 const defaultState: IUser = {
   isAuth: Boolean(localStorage.getItem("isAuth")),
-  role: null,
+  role: Number(localStorage.getItem("role")),
 };
 
 export const $user = createStore<IUser>(defaultState);

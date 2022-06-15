@@ -1,38 +1,39 @@
-import {useEffect} from "react";
+import React, {useEffect} from 'react';
+import NavBarImpov from "../../components/NavBarImpov";
 import {Table} from "react-bootstrap";
-import {NavBarAdmin} from "components";
-import {useVolonteers} from "stores";
+import {useClaim} from "../../stores/claim";
 
-const VolonteerAdmin = () => {
+const ClaimUser = () => {
 
-    const {volonteers, fetchVolonteersList} = useVolonteers();
+    const {claim, fetchClaimList} = useClaim();
 
     useEffect(() => {
-        fetchVolonteersList()
+        fetchClaimList()
     }, []);
+
 
     return (
         <div>
-            <NavBarAdmin/>
+            <NavBarImpov/>
             <Table striped bordered hover variant="dark">
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>Date</th>
+                    <th>Completion Date</th>
+                    <th>Street</th>
+                    <th>House</th>
                 </tr>
                 </thead>
                 <tbody>
-                {volonteers.list.map((item, i) => {
+                {claim.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
-                            <td>{item.phone}</td>
-                            <td>{item.gender}</td>
-                            <td>{item.employedDate}</td>
+                            <td>{item.taskCompletionDate}</td>
+                            <td>{item.street}</td>
+                            <td>{item.house}</td>
                         </tr>
                     );
                 })}
@@ -42,4 +43,4 @@ const VolonteerAdmin = () => {
     );
 };
 
-export default VolonteerAdmin;
+export default ClaimUser;

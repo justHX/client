@@ -7,9 +7,9 @@ const NavBarImpov = () => {
         <Container>
           <Navbar.Brand>Панель пользователя</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#claim">Подать заявку</Nav.Link>
-            <Nav.Link href="#story">История</Nav.Link>
-            <Nav.Link href="#edit">Редактировать информацию</Nav.Link>
+            <Nav.Link href="/impoverished/claim">Подать заявку</Nav.Link>
+            <Nav.Link href="/impoverished/story">История</Nav.Link>
+            <Nav.Link href="/impoverished/edit">Редактировать информацию</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

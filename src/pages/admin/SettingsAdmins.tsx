@@ -1,15 +1,16 @@
-import {useEffect} from "react";
+import React, {useEffect} from 'react';
+import {NavBarAdmin} from "../../components";
 import {Table} from "react-bootstrap";
-import {NavBarAdmin} from "components";
-import {useVolonteers} from "stores";
+import {useSettings} from "../../stores";
 
-const VolonteerAdmin = () => {
+const SettingsAdmins = () => {
 
-    const {volonteers, fetchVolonteersList} = useVolonteers();
+    const {settings, fetchSettingsList} = useSettings();
 
     useEffect(() => {
-        fetchVolonteersList()
+        fetchSettingsList()
     }, []);
+
 
     return (
         <div>
@@ -19,20 +20,16 @@ const VolonteerAdmin = () => {
                 <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Phone</th>
-                    <th>Gender</th>
-                    <th>Date</th>
+                    <th>Value</th>
                 </tr>
                 </thead>
                 <tbody>
-                {volonteers.list.map((item, i) => {
+                {settings.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>
                             <td>{item.name}</td>
-                            <td>{item.phone}</td>
-                            <td>{item.gender}</td>
-                            <td>{item.employedDate}</td>
+                            <td>{item.value}</td>
                         </tr>
                     );
                 })}
@@ -42,4 +39,4 @@ const VolonteerAdmin = () => {
     );
 };
 
-export default VolonteerAdmin;
+export default SettingsAdmins;
