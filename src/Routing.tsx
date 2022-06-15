@@ -105,7 +105,7 @@ const Routing: FC = () => {
             path={ROUTES.IMPROVERISHED_ROUTE_CLAIM}
             element={
                 <SecurePage
-                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    isAuth={user.isAuth && user.role === UserRole.USER}
                     redirect={ROUTES.LOGIN_ROUTE}
                 >
                     <ClaimUser />
@@ -117,7 +117,7 @@ const Routing: FC = () => {
             path={ROUTES.IMPROVERISHED_ROUTE_EDIT}
             element={
                 <SecurePage
-                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    isAuth={user.isAuth && user.role === UserRole.USER}
                     redirect={ROUTES.LOGIN_ROUTE}
                 >
                     <EditUser />
@@ -129,7 +129,7 @@ const Routing: FC = () => {
             path={ROUTES.IMPROVERISHED_ROUTE_STORY}
             element={
                 <SecurePage
-                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    isAuth={user.isAuth && user.role === UserRole.USER}
                     redirect={ROUTES.LOGIN_ROUTE}
                 >
                     <StoryUser />

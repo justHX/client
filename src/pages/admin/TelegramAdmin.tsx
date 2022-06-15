@@ -1,23 +1,16 @@
 import {Table} from "react-bootstrap";
 import {NavBarAdmin} from "../../components";
+import {useFeedback} from "../../stores";
+import {useEffect} from "react";
+import {useTelegram} from "../../stores/telegram";
 
 const TelegramAdmin = () => {
 
+    const {telegram, fetchCommandsList} = useTelegram();
 
-    const comm = [
-        {
-            id: "d76sad7",
-            text: "dfsfs",
-            description: "87654",
-            isActive: true,
-        },
-        {
-            id: "d76sad7",
-            text: "dfsfs",
-            description: "87654",
-            isActive: true,
-        },
-    ];
+    useEffect(() => {
+        fetchCommandsList()
+    }, []);
 
     return (
         <div>
@@ -32,7 +25,7 @@ const TelegramAdmin = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {comm.map((item, i) => {
+                {telegram.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>

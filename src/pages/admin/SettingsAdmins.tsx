@@ -11,7 +11,6 @@ const SettingsAdmins = () => {
         fetchSettingsList()
     }, []);
 
-
     return (
         <div>
             <NavBarAdmin/>
