@@ -12,6 +12,11 @@ import Welcome from "pages/Welcome";
 import { ROUTES } from "const/Routes";
 
 import { useUser, UserRole } from "stores";
+import UsersAdmin from "./pages/admin/UsersAdmin";
+import VolonteerAdmin from "./pages/admin/VolonteerAdmin";
+import FeedbackAdmin from "./pages/admin/FeedbackAdmin";
+import TelegramAdmin from "./pages/admin/TelegramAdmin";
+import SettingsAdmins from "./pages/admin/SettingsAdmins";
 
 const Routing: FC = () => {
   const { user } = useUser();
@@ -29,6 +34,61 @@ const Routing: FC = () => {
           </SecurePage>
         }
       />
+        <Route
+            path={ROUTES.ADMIN_ROUTE_USER}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <UsersAdmin />
+                </SecurePage>
+            }
+        />
+        <Route
+            path={ROUTES.ADMIN_ROUTE_VOLONTEER}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <VolonteerAdmin />
+                </SecurePage>
+            }
+        />
+        <Route
+            path={ROUTES.ADMIN_ROUTE_FEEDBACK}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <FeedbackAdmin />
+                </SecurePage>
+            }
+        />
+        <Route
+            path={ROUTES.ADMIN_ROUTE_TELEGRAMM}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <TelegramAdmin />
+                </SecurePage>
+            }
+        />
+        <Route
+            path={ROUTES.ADMIN_ROUTE_SETTINGS}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <SettingsAdmins />
+                </SecurePage>
+            }
+        />
       <Route
         path={ROUTES.IMPROVERISHED_ROUTE}
         element={

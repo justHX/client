@@ -6,7 +6,7 @@ import {useLocation} from "react-router-dom";
 const AdminPage = () => {
 
     const location = useLocation();
-    const isimpoverishedPage = location.pathname === "/admin#impoverished";
+    const isimpoverishedPage = location.pathname === "/admin/user";
 
   return (
     <div>

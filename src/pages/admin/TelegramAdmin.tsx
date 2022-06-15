@@ -1,4 +1,5 @@
 import { Table } from "react-bootstrap";
+import {NavBarAdmin} from "../../components";
 
 const TelegramAdmin = () => {
   const comm = [
@@ -32,6 +33,7 @@ const TelegramAdmin = () => {
 
   return (
     <div>
+      <NavBarAdmin/>
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>

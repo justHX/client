@@ -4,6 +4,7 @@ import {useLocation} from "react-router-dom";
 
 import {adminVolonteerList} from "../../actions/adminPanelApi";
 import VolonteerAuth from "../auth/VolonteerAuth";
+import {NavBarAdmin} from "../../components";
 
 const VolonteerAdmin = () => {
 
@@ -33,6 +34,7 @@ const VolonteerAdmin = () => {
 
     return (
         <div>
+            <NavBarAdmin/>
             <Table striped bordered hover variant="dark">
                 <thead>
                 <tr>
