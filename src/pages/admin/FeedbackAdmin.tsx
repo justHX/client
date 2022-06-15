@@ -1,15 +1,24 @@
 import {NavBarAdmin} from "../../components";
 import {Table} from "react-bootstrap";
-import {useFeedback, useSettings} from "../../stores";
-import {useEffect} from "react";
+import {useFeedback} from "../../stores";
+import {useEffect, useMemo} from "react";
+import {DateUtils} from "utils";
 
 const FeedbackAdmin = () => {
     const {feedback, fetchFeedbackList} = useFeedback();
 
     useEffect(() => {
         fetchFeedbackList()
-    }, []);
+    }, [fetchFeedbackList]);
 
+    const parsedVolunteers = useMemo(
+        () =>
+            feedback.list.map((feedb) => {
+                feedb.sendDate = DateUtils.parseDate(feedb.sendDate);
+                return feedb;
+            }),
+        [feedback.list]
+    );
     return (
         <div>
             <NavBarAdmin/>
