@@ -36,7 +36,7 @@ const NavBarAdmin = () => {
           <Nav className="me-auto">
             {paths.map(({ route, isActive, title }) => (
               <Nav.Link
-                style={isActive ? { color: "white" } : undefined}
+                style={isActive ? { textDecoration: "underline" } : undefined}
                 href={route}
               >
                 {title}

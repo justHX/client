@@ -46,6 +46,7 @@ const Routing: FC = () => {
           </ProtectedPage>
         }
       />
+      
       <Route
         path={ROUTES.ADMIN_ROUTE_USER}
         element={
@@ -54,6 +55,7 @@ const Routing: FC = () => {
           </ProtectedPage>
         }
       />
+      
       <Route
         path={ROUTES.ADMIN_ROUTE_VOLONTEER}
         element={
@@ -62,6 +64,7 @@ const Routing: FC = () => {
           </ProtectedPage>
         }
       />
+      
       <Route
         path={ROUTES.ADMIN_ROUTE_FEEDBACK}
         element={
@@ -70,6 +73,7 @@ const Routing: FC = () => {
           </ProtectedPage>
         }
       />
+      
       <Route
         path={ROUTES.ADMIN_ROUTE_TELEGRAMM}
         element={
@@ -78,6 +82,7 @@ const Routing: FC = () => {
           </ProtectedPage>
         }
       />
+      
       <Route
         path={ROUTES.ADMIN_ROUTE_SETTINGS}
         element={
@@ -86,6 +91,7 @@ const Routing: FC = () => {
           </ProtectedPage>
         }
       />
+      
       <Route
         path={ROUTES.IMPROVERISHED_ROUTE}
         element={
@@ -98,7 +104,7 @@ const Routing: FC = () => {
       <Route
         path={ROUTES.IMPROVERISHED_ROUTE_CLAIM}
         element={
-          <ProtectedPage role={UserRole.ADMIN}>
+          <ProtectedPage role={UserRole.USER}>
             <ClaimUser />
           </ProtectedPage>
         }
@@ -107,7 +113,7 @@ const Routing: FC = () => {
       <Route
         path={ROUTES.IMPROVERISHED_ROUTE_EDIT}
         element={
-          <ProtectedPage role={UserRole.ADMIN}>
+          <ProtectedPage role={UserRole.USER}>
             <EditUser />
           </ProtectedPage>
         }
@@ -116,7 +122,7 @@ const Routing: FC = () => {
       <Route
         path={ROUTES.IMPROVERISHED_ROUTE_STORY}
         element={
-          <ProtectedPage role={UserRole.ADMIN}>
+          <ProtectedPage role={UserRole.USER}>
             <StoryUser />
           </ProtectedPage>
         }
