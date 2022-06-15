@@ -1,22 +1,22 @@
-import { FC } from "react";
-import { Route, Routes } from "react-router-dom";
+import {FC} from "react";
+import {Navigate, Route, Routes} from "react-router-dom";
 
-import { SecurePage } from "components";
-
-import AdminPage from "pages/persons/AdminPage";
-import ImpoverishedPage from "pages/persons/ImpoverishedPage";
+import {SecurePage} from "components";
 import VolonteerPage from "pages/persons/VolonteerPage";
 import Auth from "pages/auth/Auth";
 import Welcome from "pages/Welcome";
 
-import { ROUTES } from "const/Routes";
+import {ROUTES} from "const/Routes";
 
-import { useUser, UserRole } from "stores";
+import {UserRole, useUser} from "stores";
 import UsersAdmin from "./pages/admin/UsersAdmin";
 import VolonteerAdmin from "./pages/admin/VolonteerAdmin";
 import FeedbackAdmin from "./pages/admin/FeedbackAdmin";
 import TelegramAdmin from "./pages/admin/TelegramAdmin";
 import SettingsAdmins from "./pages/admin/SettingsAdmins";
+import ClaimUser from "./pages/impoverished/ClaimUser";
+import EditUser from "./pages/impoverished/EditUser";
+import StoryUser from "./pages/impoverished/StoryUser";
 
 const Routing: FC = () => {
   const { user } = useUser();
@@ -30,7 +30,7 @@ const Routing: FC = () => {
             isAuth={user.isAuth && user.role === UserRole.ADMIN}
             redirect={ROUTES.LOGIN_ROUTE}
           >
-            <AdminPage />
+              <Navigate to={ROUTES.ADMIN_ROUTE_USER} />
           </SecurePage>
         }
       />
@@ -96,10 +96,46 @@ const Routing: FC = () => {
             isAuth={user.isAuth && user.role === UserRole.USER}
             redirect={ROUTES.LOGIN_ROUTE}
           >
-            <ImpoverishedPage />
+              <Navigate to={ROUTES.IMPROVERISHED_ROUTE_CLAIM} />
           </SecurePage>
         }
       />
+
+        <Route
+            path={ROUTES.IMPROVERISHED_ROUTE_CLAIM}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <ClaimUser />
+                </SecurePage>
+            }
+        />
+
+        <Route
+            path={ROUTES.IMPROVERISHED_ROUTE_EDIT}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <EditUser />
+                </SecurePage>
+            }
+        />
+
+        <Route
+            path={ROUTES.IMPROVERISHED_ROUTE_STORY}
+            element={
+                <SecurePage
+                    isAuth={user.isAuth && user.role === UserRole.ADMIN}
+                    redirect={ROUTES.LOGIN_ROUTE}
+                >
+                    <StoryUser />
+                </SecurePage>
+            }
+        />
 
       <Route path={ROUTES.VOLONTEER_ROUTE} element={<VolonteerPage />} />
       <Route path={ROUTES.LOGIN_ROUTE} element={<Auth />} />

@@ -2,6 +2,7 @@ export enum ROUTES {
   WELCOME_ROUTE = "/",
   LOGIN_ROUTE = "/login",
   REGISTRATION_ROUTE = "/registration",
+  VOLONTEER_ROUTE = "/volonteer",
 
   ADMIN_ROUTE = "/admin",
   ADMIN_ROUTE_USER = "/admin/user",
@@ -10,6 +11,8 @@ export enum ROUTES {
   ADMIN_ROUTE_TELEGRAMM = "/admin/telegram",
   ADMIN_ROUTE_SETTINGS = "/admin/settings",
 
-  VOLONTEER_ROUTE = "/volonteer",
   IMPROVERISHED_ROUTE = "/impoverished",
+  IMPROVERISHED_ROUTE_CLAIM = "/impoverished/claim",
+  IMPROVERISHED_ROUTE_EDIT= "/impoverished/edit",
+  IMPROVERISHED_ROUTE_STORY = "/impoverished/story",
 }

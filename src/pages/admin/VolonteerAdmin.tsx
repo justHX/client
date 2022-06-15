@@ -14,8 +14,9 @@ const VolonteerAdmin = () => {
         id: string,
         name: string,
         phone: string,
+        gender: string,
         employedDate: string,
-        isRegisterTrue: boolean,
+        isRegister: boolean,
     }
 
     useEffect(() => {
@@ -41,6 +42,7 @@ const VolonteerAdmin = () => {
                     <th>#</th>
                     <th>Name</th>
                     <th>Phone</th>
+                    <th>Gender</th>
                     <th>Date</th>
                 </tr>
                 </thead>
@@ -51,6 +53,7 @@ const VolonteerAdmin = () => {
                             <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.phone}</td>
+                            <td>{item.gender}</td>
                             <td>{item.employedDate}</td>
                         </tr>
                     );
