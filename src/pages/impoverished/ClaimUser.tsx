@@ -1,25 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import NavBarImpov from "../../components/NavBarImpov";
 import {Table} from "react-bootstrap";
+import {useClaim} from "../../stores/claim";
 
 const ClaimUser = () => {
 
-    const comm = [
-        {
-            id: "d76sad7",
-            name: "dfsfs",
-            taskCompletionDate: "87654",
-            street: "87654",
-            house: "dsafgh",
-        },
-        {
-            id: "d76sad7",
-            name: "dfsfs",
-            taskCompletionDate: "87654",
-            street: "87654",
-            house: "dsafgh",
-        },
-    ];
+    const {claim, fetchClaimList} = useClaim();
+
+    useEffect(() => {
+        fetchClaimList()
+    }, []);
+
+
     return (
         <div>
             <NavBarImpov/>
@@ -34,7 +26,7 @@ const ClaimUser = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {comm.map((item, i) => {
+                {claim.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>

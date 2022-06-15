@@ -1,22 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {NavBarAdmin} from "../../components";
 import {Table} from "react-bootstrap";
+import {useSettings} from "../../stores";
 
 const SettingsAdmins = () => {
-    const comm = [
-        {
-            id: "d76sad7",
-            email: "dfsfs",
-            fullName: "87654",
 
-        },
-        {
-            id: "d76sad7",
-            email: "dfsfs",
-            fullName: "87654",
+    const {settings, fetchSettingsList} = useSettings();
 
-        }
-    ];
+    useEffect(() => {
+        fetchSettingsList()
+    }, []);
+
+
     return (
         <div>
             <NavBarAdmin/>
@@ -24,17 +19,17 @@ const SettingsAdmins = () => {
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Email</th>
-                    <th>Full Name</th>
+                    <th>Name</th>
+                    <th>Value</th>
                 </tr>
                 </thead>
                 <tbody>
-                {comm.map((item, i) => {
+                {settings.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>
-                            <td>{item.email}</td>
-                            <td>{item.fullName}</td>
+                            <td>{item.name}</td>
+                            <td>{item.value}</td>
                         </tr>
                     );
                 })}

@@ -1,37 +1,14 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {Table} from "react-bootstrap";
-import {useLocation} from "react-router-dom";
-
-import {adminVolonteerList} from "../../actions/adminPanelApi";
-import VolonteerAuth from "../auth/VolonteerAuth";
-import {NavBarAdmin} from "../../components";
+import {NavBarAdmin} from "components";
+import {useVolonteers} from "stores";
 
 const VolonteerAdmin = () => {
 
-    const [volonteers, setVolonteers] = useState<Volonteer[] | null>(null);
-
-    interface Volonteer {
-        id: string,
-        name: string,
-        phone: string,
-        gender: string,
-        employedDate: string,
-        isRegister: boolean,
-    }
-
+    const {volonteers, fetchVolonteersList} = useVolonteers();
 
     useEffect(() => {
-        (async () => {
-            try {
-                const dataServer: any = await adminVolonteerList();
-                const v: Volonteer[] = dataServer.data
-                console.log(v)
-
-                setVolonteers(v);
-            } catch (e: any) {
-                alert("Ошибка!");
-            }
-        })();
+        fetchVolonteersList()
     }, []);
 
     return (
@@ -48,7 +25,7 @@ const VolonteerAdmin = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {volonteers?.map((item, i) => {
+                {volonteers.list.map((item, i) => {
                     return (
                         <tr key={i}>
                             <td>{item.id}</td>
