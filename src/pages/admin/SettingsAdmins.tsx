@@ -9,7 +9,7 @@ const SettingsAdmins = () => {
 
     useEffect(() => {
         fetchSettingsList()
-    }, []);
+    }, [fetchSettingsList]);
 
     return (
         <div>

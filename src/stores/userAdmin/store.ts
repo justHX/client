@@ -1,17 +1,17 @@
-import { createStore, createApi } from "effector";
+import {createApi, createStore} from "effector";
 
-import type { Settings } from "./types";
+import type {UserAdmin} from "./types";
 
-type SettingsStore = {
-  list: Settings[];
-  item: Maybe<Settings>;
+type UserAdminStore = {
+  list: UserAdmin[];
+  item: Maybe<UserAdmin>;
 };
 
-const defaultState: SettingsStore = { list: [], item: null };
+const defaultState: UserAdminStore = { list: [], item: null };
 
-export const $settings = createStore(defaultState);
+export const $userAdmin = createStore(defaultState);
 
-export const { setList, setItem } = createApi($settings, {
-  setList: (state, value: Settings[]) => ({ ...state, list: value }),
-  setItem: (state, value: Maybe<Settings>) => ({ ...state, item: value }),
+export const { setList, setItem } = createApi($userAdmin, {
+  setList: (state, value: UserAdmin[]) => ({ ...state, list: value }),
+  setItem: (state, value: Maybe<UserAdmin>) => ({ ...state, item: value }),
 });

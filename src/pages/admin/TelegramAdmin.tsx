@@ -10,7 +10,7 @@ const TelegramAdmin = () => {
 
     useEffect(() => {
         fetchCommandsList()
-    }, []);
+    }, [fetchCommandsList]);
 
     return (
         <div>

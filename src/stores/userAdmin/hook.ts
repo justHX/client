@@ -1,64 +1,64 @@
-import { useCallback } from "react";
-import { useStore } from "effector-react";
+import {useCallback} from "react";
+import {useStore} from "effector-react";
 
-import { API } from "API";
+import {API} from "API";
 
-import { $settings, setItem, setList } from "./store";
+import {$userAdmin, setItem, setList} from "./store";
 
-import type { Settings } from "./types";
+import type {UserAdmin, UserAdminAll} from "./types";
 
-export function useSettings() {
-  const settings = useStore($settings);
+export function useUserAdmin() {
+    const userAdmin = useStore($userAdmin);
 
-  const fetchSettingsList = useCallback(async () => {
-    try {
-      const result = await API.get<Settings[]>("/Admin/Settings");
+    const fetchUserAdminList = useCallback(async () => {
+        try {
+            const result = await API.get<UserAdmin[]>("/Admin/User/List");
 
-      setList(result?.data || []);
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
+            setList(result?.data || []);
+        } catch (e) {
+            console.error(e);
+        }
+    }, []);
 
-  const fetchSettingsById = useCallback(async (id: string) => {
-    try {
-      const result = await API.get<Settings>(`/Admin/Settings/${id}`);
+    const fetchUserAdminById = useCallback(async (id: string) => {
+        try {
+            const result = await API.get<UserAdminAll>(`/Admin/User/Info/${id}`);
 
-      setItem(result?.data);
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
+            setItem(result?.data);
+        } catch (e) {
+            console.error(e);
+        }
+    }, []);
 
-  const changeSettings = useCallback(
-    async (settings: Settings) => {
-      try {
-        await API.post("/Admin/Settings", settings);
-        await fetchSettingsList();
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    [fetchSettingsList]
-  );
+    const changeUserAdmin = useCallback(
+        async (userAdminUpdate: UserAdminAll) => {
+            try {
+                await API.post("/Admin/User/Update", userAdminUpdate);
+                await fetchUserAdminList();
+            } catch (e) {
+                console.error(e);
+            }
+        },
+        [fetchUserAdminList]
+    );
 
-  const deleteSettingsById = useCallback(
-    async (id: string) => {
-      try {
-        await API.delete(`/Admin/Settings/${id}`);
-        await fetchSettingsList();
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    [fetchSettingsList]
-  );
+    const deleteUserAdminById = useCallback(
+        async (id: string) => {
+            try {
+                await API.delete(`/Admin/User/Delete/${id}`);
+                await fetchUserAdminList();
+            } catch (e) {
+                console.error(e);
+            }
+        },
+        [fetchUserAdminList]
+    );
 
-  return {
-    settings,
-    fetchSettingsList,
-    fetchSettingsById,
-    deleteSettingsById,
-    changeSettings,
-  };
+    return {
+        userAdmin,
+        changeUserAdmin,
+        fetchUserAdminById,
+        fetchUserAdminList,
+        deleteUserAdminById
+    };
 }

@@ -1,2 +1,2 @@
-export type { Settings } from "./types";
-export { useSettings } from "./hook";
+export type { UserAdmin } from "./types";
+export { useUserAdmin } from "./hook";
