@@ -30,7 +30,7 @@ const ImpoverishedAuth = () => {
 
   const clickUser = async () => {
     await authUser(email, password);
-    navigate(ROUTES.IMPROVERISHED_ROUTE, { replace: true });
+    navigate(ROUTES.IMPROVERISHED_ROUTE_CLAIM, { replace: true });
   };
 
     const registerUser = async () => {
