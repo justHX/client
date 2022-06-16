@@ -21,6 +21,8 @@ const ImpoverishedAuth = () => {
     const [street, setStreet] = useState("");
     const [house, setHouse] = useState("");
     const [flat, setFlat] = useState("");
+    const [loginReg, setLoginReg] = useState("");
+    const [passwordReg, setPasswordReg] = useState("");
 
   const { authUser } = useUser();
 
@@ -39,7 +41,9 @@ const ImpoverishedAuth = () => {
             district,
             street,
             house,
-            flat
+            flat,
+            loginReg,
+            passwordReg
         );
         navigate(ROUTES.LOGIN_ROUTE, { replace: true });
     };
@@ -80,6 +84,10 @@ const ImpoverishedAuth = () => {
                           onChange={(e) => setHouse(e.target.value)}/>
             <Form.Control className="mt-3" placeholder="Введите квартиру"
                           onChange={(e) => setFlat(e.target.value)}/>
+              <Form.Control className="mt-3" placeholder="Введите логин"
+                            onChange={(e) => setLoginReg(e.target.value)}/>
+              <Form.Control className="mt-3" placeholder="Введите пароль"
+                            onChange={(e) => setPasswordReg(e.target.value)}/>
           </div>
         )}
 

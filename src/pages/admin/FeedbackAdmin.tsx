@@ -28,12 +28,9 @@ const FeedbackAdmin = () => {
                     <th>#</th>
                     <th>Text</th>
                     <th>Send Date</th>
-                    <th>
-                        <tr>Id</tr>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Expirience</th>
-                    </th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Expirience</th>
                     <th>Read</th>
                     <th>Answer</th>
                 </tr>
@@ -45,12 +42,11 @@ const FeedbackAdmin = () => {
                             <td>{item.id}</td>
                             <td>{item.text}</td>
                             <td>{item.sendDate}</td>
-                            <td>
-                                <td>{item.botUser.id}</td>
-                                <td>{item.botUser.name}</td>
-                                <td>{item.botUser.age}</td>
-                                <td>{item.botUser.expirience}</td>
-                            </td>
+
+                            <td>{item.botUser.name}</td>
+                            <td>{item.botUser.age}</td>
+                            <td>{item.botUser.expirience}</td>
+
                             <td>{item.isRead.toString()}</td>
                             <td>{item.isAnswered.toString()}</td>
                         </tr>
