@@ -8,21 +8,23 @@ import type {
   ImpoverishedHistoryListItem,
   ImpoverishedHistoryFullItem,
 } from "./types";
+import {$user} from "../user/store";
 
 export function useImpoverishedHistory() {
   const impoverishedHistory = useStore($impoverishedHistory);
+  const {idUser} = useStore($user);
 
   const fetchList = useCallback(async () => {
     try {
       const result = await API.get<ImpoverishedHistoryListItem[]>(
-        "/User/Tasks"
+        `/User/Tasks?id=${idUser}`
       );
 
       setList(result?.data || []);
     } catch (e) {
       console.error(e);
     }
-  }, []);
+  }, [idUser]);
 
   const fetchItem = useCallback(async (userId: string) => {
     try {

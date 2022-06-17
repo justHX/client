@@ -47,7 +47,7 @@ export function useTelegram() {
   const deleteCommandsById = useCallback(
     async (id: string) => {
       try {
-        await API.delete(`/Admin/Settings/${id}`);
+        await API.delete(`/Admin/Commands/Delete/${id}`);
         await fetchCommandsList();
       } catch (e) {
         console.error(e);

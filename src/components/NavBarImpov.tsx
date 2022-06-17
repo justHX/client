@@ -11,8 +11,8 @@ interface Route {
 }
 
 const routes: Route[] = [
-  { route: ROUTES.IMPROVERISHED_ROUTE_CLAIM, title: "Подать заявку" },
-  { route: ROUTES.IMPROVERISHED_ROUTE_STORY, title: "История" },
+  {route: ROUTES.IMPROVERISHED_ROUTE_STORY, title: "История" },
+  { route: ROUTES.IMPROVERISHED_ROUTE_CLAIM, title: "Заявки" },
   { route: ROUTES.IMPROVERISHED_ROUTE_EDIT, title: "Редактировать информацию" },
 ];
 

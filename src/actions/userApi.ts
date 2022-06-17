@@ -33,8 +33,7 @@ export const registerImpov = (
 };
 
 export const registerVol = (
-    region: any,
-    city: any,
+
     district: any,
     street: any,
     house: any,
@@ -45,8 +44,6 @@ export const registerVol = (
     phone: any
 ) => {
     return API.post("/Volunteer/Register", {
-        region,
-        city,
         district,
         street,
         house,

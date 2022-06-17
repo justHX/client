@@ -6,8 +6,6 @@ import { registerVol } from "actions/userApi";
 import { ROUTES } from "const";
 
 const VolonteerAuth = () => {
-  const [region, setRegion] = useState("");
-  const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const [street, setStreet] = useState("");
   const [house, setHouse] = useState("");
@@ -22,8 +20,6 @@ const VolonteerAuth = () => {
   const click = async () => {
     try {
       await registerVol(
-        region,
-        city,
         district,
         street,
         house,
@@ -45,16 +41,6 @@ const VolonteerAuth = () => {
         Введите данные для регистрации в Telegram-боте
       </h2>
       <Form className="d-flex flex-column">
-        <Form.Control
-          className="mt-3"
-          placeholder="Введите регион"
-          onChange={(e) => setRegion(e.target.value)}
-        />
-        <Form.Control
-          className="mt-3"
-          placeholder="Введите город"
-          onChange={(e) => setCity(e.target.value)}
-        />
         <Form.Control
           className="mt-3"
           placeholder="Введите район"

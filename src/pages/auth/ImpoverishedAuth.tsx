@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useContext, useState} from "react";
 import { Button, Form, NavLink } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -28,9 +28,10 @@ const ImpoverishedAuth = () => {
 
   const isLoginPage = location.pathname === ROUTES.LOGIN_ROUTE;
 
-  const clickUser = async () => {
+  const loginUser = async () => {
     await authUser(email, password);
-    navigate(ROUTES.IMPROVERISHED_ROUTE_CLAIM, { replace: true });
+    localStorage.set
+    navigate(ROUTES.IMPROVERISHED_ROUTE_STORY, { replace: true });
   };
 
     const registerUser = async () => {
@@ -95,7 +96,7 @@ const ImpoverishedAuth = () => {
           style={{ width: 150 }}
           className="m-auto mt-4"
           variant={"outline-primary"}
-          onClick={isLoginPage ? clickUser : registerUser}
+          onClick={isLoginPage ? loginUser : registerUser}
         >
           {isLoginPage ? "Войти" : "Регистрация"}
         </Button>

@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
 import NavBarImpov from "../../components/NavBarImpov";
-import {useImpoverishedHistory, useVolonteers} from "../../stores";
+import {useImpoverishedHistory, useUser, useVolonteers} from "../../stores";
 import {Table} from "react-bootstrap";
 
 const StoryUser = () => {
+    const user = useUser()
+
     const {impoverishedHistory, fetchList} = useImpoverishedHistory();
 
     useEffect(() => {
