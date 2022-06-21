@@ -3,7 +3,7 @@ import {useStore} from "effector-react";
 
 import {API} from "API";
 
-import {$userAdmin, setItem, setList} from "./store";
+import {$userAdmin, setList, setUserAdminAll} from "./store";
 
 import type {UserAdmin, UserAdminAll} from "./types";
 
@@ -22,9 +22,9 @@ export function useUserAdmin() {
 
     const fetchUserAdminById = useCallback(async (id: string) => {
         try {
-            const result = await API.get<UserAdminAll>(`/Admin/User/Info/${id}`);
+            const result = await API.get<UserAdminAll>(`/Admin/User/Info?id=${id}`);
 
-            setItem(result?.data);
+            setUserAdminAll(result?.data || null)
         } catch (e) {
             console.error(e);
         }

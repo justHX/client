@@ -1,10 +1,10 @@
-import {useContext, useState} from "react";
-import { Button, Form, NavLink } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import {useState} from "react";
+import {Button, Form, NavLink} from "react-bootstrap";
+import {useLocation, useNavigate} from "react-router-dom";
 
-import { ROUTES } from "const";
+import {ROUTES} from "const";
 
-import { useUser } from "stores";
+import {useUser} from "stores";
 import {registerImpov} from "../../actions/userApi";
 
 const ImpoverishedAuth = () => {
@@ -30,7 +30,7 @@ const ImpoverishedAuth = () => {
 
   const loginUser = async () => {
     await authUser(email, password);
-    localStorage.set
+
     navigate(ROUTES.IMPROVERISHED_ROUTE_STORY, { replace: true });
   };
 

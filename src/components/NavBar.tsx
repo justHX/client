@@ -20,7 +20,7 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <h4 className="text-white w-25">Ⓥ Volonteer</h4>
+        <h4 className="text-white w-25">Самый добрый</h4>
         {user.isAuth ? (
           <Nav className="ml-auto" style={{ color: "white" }}>
             <Button variant="outline-light" onClick={logOut} className="ml-2">

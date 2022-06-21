@@ -15,4 +15,6 @@ export enum ROUTES {
   IMPROVERISHED_ROUTE_CLAIM = "/impoverished/claim",
   IMPROVERISHED_ROUTE_EDIT= "/impoverished/edit",
   IMPROVERISHED_ROUTE_STORY = "/impoverished/story",
+
+  TELEGRAM_INFO_ROUTE = "/telegram/info"
 }

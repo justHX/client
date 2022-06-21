@@ -16,7 +16,8 @@ import TelegramAdmin from "./pages/admin/TelegramAdmin";
 import SettingsAdmins from "./pages/admin/SettingsAdmins";
 import ClaimUser from "./pages/impoverished/ClaimUser";
 import EditUser from "./pages/impoverished/EditUser";
-import StoryUser from "./pages/impoverished/StoryUser";
+import CreateClaimUser from "./pages/impoverished/CreateClaimUser";
+import TelegramInfo from "./pages/TelegramInfo";
 
 interface ProtectedPageProps {
   role: UserRole;
@@ -105,7 +106,7 @@ const Routing: FC = () => {
         path={ROUTES.IMPROVERISHED_ROUTE_CLAIM}
         element={
           <ProtectedPage role={UserRole.USER}>
-            <ClaimUser />
+            <CreateClaimUser />
           </ProtectedPage>
         }
       />
@@ -123,7 +124,7 @@ const Routing: FC = () => {
         path={ROUTES.IMPROVERISHED_ROUTE_STORY}
         element={
           <ProtectedPage role={UserRole.USER}>
-            <StoryUser />
+              <ClaimUser />
           </ProtectedPage>
         }
       />
@@ -132,6 +133,7 @@ const Routing: FC = () => {
       <Route path={ROUTES.LOGIN_ROUTE} element={<Auth />} />
       <Route path={ROUTES.REGISTRATION_ROUTE} element={<Auth />} />
       <Route path={ROUTES.WELCOME_ROUTE} element={<Welcome />} />
+        <Route path={ROUTES.TELEGRAM_INFO_ROUTE} element={<TelegramInfo/>}/>
     </Routes>
   );
 };

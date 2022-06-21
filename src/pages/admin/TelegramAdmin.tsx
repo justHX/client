@@ -1,12 +1,11 @@
-import {Button, Card, Form, ListGroup, Modal, Table} from "react-bootstrap";
+import {Button, Form, Modal, Table} from "react-bootstrap";
 import {NavBarAdmin} from "../../components";
-import {useFeedback, useUser} from "../../stores";
 import {useEffect, useMemo, useState} from "react";
 import {useTelegram} from "../../stores/telegram";
 
 const TelegramAdmin = () => {
 
-    const {telegram, fetchCommandsList, deleteCommandsById} = useTelegram();
+    const {telegram, fetchCommandsList} = useTelegram();
     const [shownId, setShownId] = useState<string>("");
     const handleClose = () => setShownId("");
     const handleShow = (id : string) => setShownId(id);
@@ -52,12 +51,6 @@ const TelegramAdmin = () => {
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="danger" onClick={()=>{
-                        deleteCommandsById(shownId)
-                        handleClose()
-                    }}>
-                        Delete
-                    </Button>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>

@@ -1,4 +1,5 @@
 export interface UserAdmin {
+  id: string
   name: string,
   phone: string,
   street: string,
@@ -6,7 +7,6 @@ export interface UserAdmin {
 }
 
 export interface UserAdminAll extends UserAdmin{
-  id: string,
   isCreate: boolean,
   age: number,
   district: number,

@@ -5,7 +5,7 @@ import { API } from "API";
 
 import { $claim, setItem, setList } from "./store";
 
-import type { Claim} from "./types";
+import type {Claim, ClaimAll} from "./types";
 
 export function useClaim() {
   const claim = useStore($claim);
@@ -23,9 +23,9 @@ export function useClaim() {
 
   const fetchClaimsById = useCallback(async (id: string) => {
     try {
-      const result = await API.get<Claim>(`/User/Tasks/${id}`);
+      const result = await API.get<ClaimAll>(`/User/Task?id=${id}`);
 
-      setItem(result?.data);
+      setItem(result?.data || null);
     } catch (e) {
       console.error(e);
     }

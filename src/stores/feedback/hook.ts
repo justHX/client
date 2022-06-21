@@ -12,7 +12,7 @@ export function useFeedback() {
 
   const fetchFeedbackList = useCallback(async () => {
     try {
-      const result = await API.get<FeedbackListItem[]>("/Admin/Feedback");
+      const result = await API.get<FeedbackListItem[]>("/Admin/Feedbacks");
 
       setList(result?.data || []);
     } catch (e) {

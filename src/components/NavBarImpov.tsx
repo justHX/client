@@ -34,6 +34,7 @@ const NavBarImpov = () => {
           <Nav className="me-auto">
             {paths.map(({ route, isActive, title }) => (
               <Nav.Link
+                  key={route}
                 style={isActive ? { textDecoration: "underline" } : undefined}
                 href={route}
               >
