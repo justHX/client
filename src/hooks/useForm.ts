@@ -11,7 +11,7 @@ type Action<T> = {
 };
 
 type Form = {
-  [key: string]: unknown;
+  [key: string]: any;
 };
 
 function reducer<T>(state: T, action: Action<any>): T {
@@ -46,5 +46,5 @@ export function useForm<T extends Form>(defaultState: T) {
     resetForm();
   }, [resetForm]);
 
-  return { state, resetForm, setFormValue };
+  return { state: state as T, setFormValue };
 }

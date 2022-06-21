@@ -1,20 +1,37 @@
 import {useEffect, useMemo, useState} from "react";
 import {Button, Form, Modal, Table} from "react-bootstrap";
 import {NavBarAdmin} from "components";
-import {useVolonteers} from "stores";
+import {useVolonteers, VolunteerDetail} from "stores";
 import {DateUtils} from "utils";
+import {useForm} from "hooks";
+
+const defaultValue = {
+    id: "",
+    name: "",
+    phone: "",
+    gender: "",
+    employedDate: "",
+    chatId: "",
+    isCreate: false,
+}
 
 const VolonteerAdmin = () => {
 
-    const {volonteers, fetchVolunteersList, fetchVolunteerById, deleteVolunteer} = useVolonteers();
+    const {volonteers, fetchVolunteersList, fetchVolunteerById, updateVolunteer, deleteVolunteer} = useVolonteers();
 
     const [shownId, setShownId] = useState<string>("");
     const handleClose = () => setShownId("");
     const handleShow = (id: string) => setShownId(id);
 
     const shownItem = useMemo(() => {
-        return volonteers.item
+        if (volonteers.item){
+            return {...volonteers.item,  employedDate : DateUtils.parseDate(volonteers.item.employedDate, "yyyy-MM-dd")}
+        } else {
+            return null;
+        }
     }, [volonteers.item])
+
+    const {state, setFormValue} = useForm<VolunteerDetail>(shownItem || defaultValue)
 
     console.log(shownItem)
 
@@ -22,25 +39,20 @@ const VolonteerAdmin = () => {
         fetchVolunteersList();
     }, [fetchVolunteersList]);
 
-    const parsedVolunteerItem = useMemo(
-        () =>
-
-            Boolean(shownId) ?
-            volonteers.item!.employedDate = DateUtils.parseDate(volonteers.item!.employedDate)
-                :
-                console.log(shownItem)
-        ,
-        [volonteers.item]
-    );
-
     const parsedVolunteers = useMemo(
         () =>
-            volonteers.list.map((volunteer) => {
-                volunteer.employedDate = DateUtils.parseDate(volunteer.employedDate);
-                return volunteer;
-            }),
+            volonteers.list.map((volunteer) =>
+                    ({...volunteer, employedDate : DateUtils.parseDate(volunteer.employedDate)})),
         [volonteers.list]
     );
+
+    const handleSubmit = () => {
+        const parsedState = {
+            ...state, employedDate: DateUtils.formatDate(state.employedDate, "yyyy-MM-dd")
+        }
+        updateVolunteer(parsedState);
+        handleClose()
+    }
 
     return (
         <div>
@@ -52,7 +64,8 @@ const VolonteerAdmin = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Check
-                        checked={Boolean(shownItem?.isCreate)}
+                        onChange={(e) => setFormValue("isCreate", e.target.checked)}
+                        checked={Boolean(state.isCreate)}
                         className="mb-3"
                         type={'checkbox'}
                         id={'default-checkbox'}
@@ -60,30 +73,36 @@ const VolonteerAdmin = () => {
                     />
 
                     <Form.Control
-                        value={shownItem?.name}
+                        onChange={(e) => setFormValue("name", e.target.value)}
+                        value={state.name}
                         className="mb-3"
                         placeholder="Text"
                     />
 
                     <Form.Control
-                        value={shownItem?.phone}
+                        onChange={(e) => setFormValue("phone", e.target.value)}
+                        value={state.phone}
                         className="mb-3"
                         placeholder="Description"
                     />
                     <Form.Control
-                        value={shownItem?.chatId}
+                        onChange={(e) => setFormValue("chatId", e.target.value)}
+                        value={state.chatId}
                         className="mb-3"
                         placeholder="Description"
                     />
                     <Form.Control
-                        value={shownItem?.gender}
+                        onChange={(e) => setFormValue("gender", e.target.value)}
+                        value={state.gender}
                         className="mb-3"
                         placeholder="Description"
                     />
                     <Form.Control
-                        value={shownItem?.employedDate}
+                        onChange={(e) => setFormValue("employedDate", e.target.value)}
+                        value={DateUtils.parseDate(state.employedDate, "yyyy-MM-dd")}
                         className="mb-3"
                         placeholder="Description"
+                        type="date"
                     />
 
                 </Modal.Body>
@@ -97,7 +116,7 @@ const VolonteerAdmin = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
@@ -114,7 +133,7 @@ const VolonteerAdmin = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {volonteers.list.map((item, i) => {
+                {parsedVolunteers.map((item, i) => {
                     return (
                         <tr key={i} onClick={() => {
                             fetchVolunteerById(shownId);

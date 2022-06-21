@@ -1,2 +1,2 @@
-export type { UserAdmin } from "./types";
+export type { UserAdmin, UserAdminAll } from "./types";
 export { useUserAdmin } from "./hook";

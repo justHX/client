@@ -133,7 +133,7 @@ const FeedbackAdmin = () => {
                 {feedback.list.map((item, i) => {
                     return (
                         <tr key={i} onClick={()=>{
-                            fetchFeedbackById(shownId);
+                            fetchFeedbackById(item.id);
                             handleShow(item.id)
                         }}>
                             <td>{item.id}</td>
