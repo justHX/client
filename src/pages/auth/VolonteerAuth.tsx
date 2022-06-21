@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import { registerVol } from "actions/userApi";
 import { ROUTES } from "const";
 
-const VolonteerAuth = () => {
+const VolonteerAuth: FC = () => {
   const [district, setDistrict] = useState("");
   const [street, setStreet] = useState("");
   const [house, setHouse] = useState("");

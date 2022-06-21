@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const routes: Route[] = [
   { route: ROUTES.ADMIN_ROUTE_TELEGRAMM, title: "Telegram бот" },
 ];
 
-const NavBarAdmin = () => {
+const NavBarAdmin: FC = () => {
   const { pathname } = useLocation();
 
   const paths = useMemo(() => {
