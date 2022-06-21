@@ -8,8 +8,9 @@ export interface UserId {
     id: string
 }
 
-
 export enum UserRole {
     ADMIN,
     USER,
 }
+
+

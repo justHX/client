@@ -23,3 +23,7 @@ export interface FeedbackDetailItem extends FeedbackBase {
   answerText: string;
   answerDate: string;
 }
+
+export interface FeedbackAnswer{
+  text: string;
+}

@@ -17,26 +17,17 @@ const ClaimUser = () => {
     const handleShow = (id: string) => setShownId(id);
 
     const shownItem = useMemo(() => {
-        return claim.item
+        if (claim.item){
+            return {...claim.item,  taskCompletionDate : DateUtils.parseDate(claim.item.taskCompletionDate, "yyyy-MM-dd")}
+        } else {
+            return null;
+        }
     }, [claim.item])
-
-    const parsedClaimItem = useMemo(
-        () =>
-
-            Boolean(shownId) ?
-                claim.item!.taskCompletionDate = DateUtils.parseDate(claim.item!.taskCompletionDate)
-                :
-                console.log(shownItem)
-        ,
-        [claim.item]
-    );
 
     const parsedClaimList = useMemo(
         () =>
-            claim.list.map((cl) => {
-                cl.taskCompletionDate = DateUtils.parseDate(cl.taskCompletionDate);
-                return cl;
-            }),
+            claim.list.map((cl) =>
+                ({...cl, taskCompletionDate : DateUtils.parseDate(cl.taskCompletionDate)})),
         [claim.list]
     );
 
@@ -198,7 +189,7 @@ const ClaimUser = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {claim.list.map((item, i) => {
+                {parsedClaimList.map((item, i) => {
                     return (
                         <tr key={i} onClick={() => {
                             fetchClaimsById(shownId);

@@ -8,7 +8,7 @@ export interface ImpoverishedHistoryListItem {
 
 export interface ImpoverishedHistoryFullItem
   extends ImpoverishedHistoryListItem {
-  // нету айдишника
+  id: string;
   age: number;
   flat: string;
   volunteerName: string;

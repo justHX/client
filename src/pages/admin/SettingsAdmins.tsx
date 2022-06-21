@@ -1,11 +1,18 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {NavBarAdmin} from "../../components";
+import {NavBarAdmin} from "components";
 import {Button, Form, Modal, Table} from "react-bootstrap";
-import {useSettings} from "../../stores";
+import {Settings, useSettings} from "stores";
+import {useForm} from "hooks";
+
+const defaultValue = {
+    id: "",
+    name: "",
+    value: ""
+}
 
 const SettingsAdmins = () => {
 
-    const {settings, fetchSettingsList, deleteSettingsById} = useSettings();
+    const {settings, fetchSettingsList, changeSettings, deleteSettingsById} = useSettings();
 
     const [shownId, setShownId] = useState<string>("");
     const handleClose = () => setShownId("");
@@ -15,9 +22,16 @@ const SettingsAdmins = () => {
         return settings.list.find((item)=>item.id === shownId)
     }, [settings.list, shownId])
 
+    const {state, setFormValue} = useForm<Settings>(shownItem || defaultValue)
+
     useEffect(() => {
         fetchSettingsList()
     }, [fetchSettingsList]);
+
+    const handleSubmit = () => {
+        changeSettings(state);
+        handleClose()
+    }
 
     return (
         <div>
@@ -29,14 +43,15 @@ const SettingsAdmins = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Control
-
-                        value={shownItem?.name}
+                        onChange={(e) => setFormValue("name", e.target.value)}
+                        value={state.name}
                         className="mb-3"
                         placeholder="Text"
                     />
 
                     <Form.Control
-                        value={shownItem?.value}
+                        onChange={(e) => setFormValue("value", e.target.value)}
+                        value={state.value}
                         className="mb-3"
                         placeholder="Description"
                     />
@@ -52,10 +67,7 @@ const SettingsAdmins = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={()=>{
-                        console.log(shownItem)
-                        handleClose()
-                    }}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>

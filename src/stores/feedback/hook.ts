@@ -5,7 +5,7 @@ import { API } from "API";
 
 import { $feedback, setList, setItem } from "./store";
 
-import type { FeedbackDetailItem, FeedbackListItem } from "./types";
+import type {FeedbackAnswer, FeedbackDetailItem, FeedbackListItem} from "./types";
 
 export function useFeedback() {
   const feedback = useStore($feedback);
@@ -31,7 +31,7 @@ export function useFeedback() {
   }, []);
 
   const updateFeedback = useCallback(
-    async (id: string, text: string) => {
+    async (id: string, text: FeedbackAnswer) => {
       try {
         await API.post(`/Admin/Feedback/SendAnswer/${id}`, { text });
         await fetchFeedbackList();

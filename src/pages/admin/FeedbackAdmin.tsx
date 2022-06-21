@@ -1,8 +1,15 @@
-import {NavBarAdmin} from "../../components";
+import {NavBarAdmin} from "components";
 import {Button, Form, Modal, Table} from "react-bootstrap";
-import {useFeedback} from "../../stores";
+import {Settings, useFeedback} from "stores";
 import {useEffect, useMemo, useState} from "react";
 import {DateUtils} from "utils";
+import {useForm} from "../../hooks";
+import {FeedbackAnswer} from "../../stores/feedback/types";
+
+
+const defaultValue = {
+    text: ""
+}
 
 const FeedbackAdmin = () => {
     const {feedback, fetchFeedbackList,fetchFeedbackById, updateFeedback} = useFeedback();
@@ -12,7 +19,17 @@ const FeedbackAdmin = () => {
     const handleShow = (id : string) => setShownId(id);
 
     const shownItem = useMemo(()=>{
-        return feedback.item
+
+        if (feedback.item){
+            return {...feedback.item,
+                answerDate : DateUtils.parseDate(feedback.item.answerDate, "yyyy-MM-dd"),
+                readDate : DateUtils.parseDate(feedback.item.readDate, "yyyy-MM-dd"),
+                sendDate : DateUtils.parseDate(feedback.item.sendDate, "yyyy-MM-dd"),
+            }
+        } else {
+            return null;
+        }
+
     }, [feedback.item, shownId])
 
     console.log(shownItem);
@@ -21,28 +38,20 @@ const FeedbackAdmin = () => {
         fetchFeedbackList()
     }, [fetchFeedbackList]);
 
-    const parsedFeedbackItem = useMemo(
-        () =>
-            Boolean(shownId) ?
-                () => {
-                    feedback.item!.readDate = DateUtils.parseDate(feedback.item!.readDate);
-                    feedback.item!.answerDate = DateUtils.parseDate(feedback.item!.answerDate);
-                    feedback.item!.sendDate = DateUtils.parseDate(feedback.item!.sendDate)
-                }
-
-                :
-                console.log(shownItem),
-        [feedback.list]
-    );
-
     const parsedFeedback = useMemo(
         () =>
-            feedback.list.map((feedb) => {
-                feedb.sendDate = DateUtils.parseDate(feedb.sendDate);
-                return feedb;
-            }),
+            feedback.list.map((feedb) =>
+                ({...feedb, sendDate : DateUtils.parseDate(feedb.sendDate)})),
         [feedback.list]
     );
+
+    const {state, setFormValue} = useForm<FeedbackAnswer>( defaultValue)
+
+    const handleSubmit = () => {
+        updateFeedback(shownId, state);
+        handleClose()
+    }
+
     return (
         <div>
             <NavBarAdmin/>
@@ -53,18 +62,21 @@ const FeedbackAdmin = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Control
+                        disabled={true}
                         value={shownItem?.text}
                         className="mb-3"
                         placeholder="Text"
                     />
 
                     <Form.Control
+                        disabled={true}
                         value={shownItem?.sendDate}
                         className="mb-3"
                         placeholder="Description"
                     />
 
                     <Form.Check
+                        disabled={true}
                         checked={Boolean(shownItem?.volunteer.name)}
                         className="mb-3"
                         type={'checkbox'}
@@ -73,6 +85,7 @@ const FeedbackAdmin = () => {
                     />
 
                     <Form.Check
+                        disabled={true}
                         checked={Boolean(shownItem?.isRead)}
                         className="mb-3"
                         type={'checkbox'}
@@ -81,12 +94,14 @@ const FeedbackAdmin = () => {
                     />
 
                     <Form.Control
+                        disabled={true}
                         value={shownItem?.readDate}
                         className="mb-3"
                         placeholder="Description"
                     />
 
                     <Form.Check
+                        disabled={true}
                         checked={Boolean(shownItem?.isAnswered)}
                         className="mb-3"
                         type={'checkbox'}
@@ -95,14 +110,23 @@ const FeedbackAdmin = () => {
                     />
 
                     <Form.Control
+                        disabled={true}
                         value={shownItem?.answerText}
                         className="mb-3"
                         placeholder="Description"
                     />
                     <Form.Control
+                        disabled={true}
                         value={shownItem?.answerDate}
                         className="mb-3"
                         placeholder="Description"
+                    />
+
+                    <Form.Control
+                        onChange={(e) => setFormValue("text", e.target.value)}
+                        as="textarea"
+                        className="mb-3 mt-5"
+                        placeholder="Text"
                     />
 
                 </Modal.Body>
@@ -110,7 +134,7 @@ const FeedbackAdmin = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
@@ -130,7 +154,7 @@ const FeedbackAdmin = () => {
                 </tr>
                 </thead>
                 <tbody>
-                {feedback.list.map((item, i) => {
+                {parsedFeedback.map((item, i) => {
                     return (
                         <tr key={i} onClick={()=>{
                             fetchFeedbackById(item.id);

@@ -1,11 +1,19 @@
 import {Button, Form, Modal, Table} from "react-bootstrap";
-import {NavBarAdmin} from "../../components";
+import {NavBarAdmin} from "components";
 import {useEffect, useMemo, useState} from "react";
-import {useTelegram} from "../../stores/telegram";
+import {Command, useTelegram} from "stores/telegram";
+import {useForm} from "hooks";
+
+const defaultValue = {
+    id: "",
+    text: "",
+    description: "",
+    isActive: false
+}
 
 const TelegramAdmin = () => {
 
-    const {telegram, fetchCommandsList} = useTelegram();
+    const {telegram, fetchCommandsList, updateCommands} = useTelegram();
     const [shownId, setShownId] = useState<string>("");
     const handleClose = () => setShownId("");
     const handleShow = (id : string) => setShownId(id);
@@ -14,11 +22,18 @@ const TelegramAdmin = () => {
         return telegram.list.find((item)=>item.id === shownId)
     }, [telegram.list, shownId])
 
+    const {state, setFormValue} = useForm<Command>(shownItem || defaultValue)
+
     useEffect(() => {
         fetchCommandsList()
     }, [fetchCommandsList]);
 
     console.log(shownItem)
+
+    const handleSubmit = () => {
+        updateCommands(state);
+        handleClose()
+    }
 
     return (
         <div>
@@ -30,19 +45,22 @@ const TelegramAdmin = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Control
-                        value={shownItem?.text}
+                        value={state.text}
+                        disabled={true}
                         className="mb-3"
                         placeholder="Text"
                     />
 
                     <Form.Control
-                        value={shownItem?.description}
+                        onChange={(e) => setFormValue("description", e.target.value)}
+                        value={state.description}
                         className="mb-3"
                         placeholder="Description"
                     />
 
                     <Form.Check
-                        checked={Boolean(shownItem?.isActive)}
+                        onChange={(e) => setFormValue("isActive", e.target.checked)}
+                        checked={Boolean(state.isActive)}
                         className="mb-3"
                         type={'checkbox'}
                         id={'default-checkbox'}
@@ -54,7 +72,7 @@ const TelegramAdmin = () => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSubmit}>
                         Save Changes
                     </Button>
                 </Modal.Footer>
