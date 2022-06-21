@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { FC, useMemo } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
@@ -11,12 +11,12 @@ interface Route {
 }
 
 const routes: Route[] = [
-  {route: ROUTES.IMPROVERISHED_ROUTE_STORY, title: "История" },
+  { route: ROUTES.IMPROVERISHED_ROUTE_STORY, title: "История" },
   { route: ROUTES.IMPROVERISHED_ROUTE_CLAIM, title: "Заявки" },
   { route: ROUTES.IMPROVERISHED_ROUTE_EDIT, title: "Редактировать информацию" },
 ];
 
-const NavBarImpov = () => {
+const NavBarImpov: FC = () => {
   const { pathname } = useLocation();
 
   const paths = useMemo(() => {
@@ -34,7 +34,7 @@ const NavBarImpov = () => {
           <Nav className="me-auto">
             {paths.map(({ route, isActive, title }) => (
               <Nav.Link
-                  key={route}
+                key={route}
                 style={isActive ? { textDecoration: "underline" } : undefined}
                 href={route}
               >

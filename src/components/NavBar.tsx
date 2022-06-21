@@ -1,7 +1,7 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { useUser } from "../stores";
+import { useUser } from "stores";
 
 const NavBar = () => {
   const navigate = useNavigate();

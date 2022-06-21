@@ -3,3 +3,8 @@ export * from "./impoverishedHistory";
 export * from "./settings";
 export * from "./volonteers";
 export * from "./feedback";
+export * from "./claim";
+export * from "./createClaim";
+export * from "./telegram";
+export * from "./userAdmin";
+export * from "./userInfo";

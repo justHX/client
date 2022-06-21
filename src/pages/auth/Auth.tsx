@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { Card, Container, Row } from "react-bootstrap";
 import { Radio, RadioGroup } from "react-radio-group";
-import { observer } from "mobx-react-lite";
 
 import ImpoverishedAuth from "./ImpoverishedAuth";
 import AdminAuth from "./AdminAuth";
 import VolonteerAuth from "./VolonteerAuth";
 
-const Auth = observer(() => {
+const backgroundURL =
+  "https://storage.picsave.pp.ua/cluster1/origin/0af363a589ffa4f3337e99f6739fb16a.jpg";
+
+const Auth: FC = () => {
   const [personRoles, setPersonRoles] = useState(<ImpoverishedAuth />);
 
   const updateRadioButton = (value: string) => {
@@ -27,14 +29,7 @@ const Auth = observer(() => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage:
-          "url(" +
-          "https://storage.picsave.pp.ua/cluster1/origin/0af363a589ffa4f3337e99f6739fb16a.jpg" +
-          ")",
-      }}
-    >
+    <div style={{ backgroundImage: `url('${backgroundURL}')` }}>
       <Container
         className="d-flex justify-content-center align-items-center"
         style={{ height: window.innerHeight - 54 }}
@@ -43,10 +38,7 @@ const Auth = observer(() => {
           {personRoles}
 
           <Row className="d-flex justify-content-between mt-3">
-            <RadioGroup
-              name="fruits"
-              onChange={(v: string) => updateRadioButton(v)}
-            >
+            <RadioGroup name="fruits" onChange={updateRadioButton}>
               <div className="radio-button-background d-inline-block mt-3 m-4">
                 <Radio
                   value="ImpoverishedAuth"
@@ -68,6 +60,6 @@ const Auth = observer(() => {
       </Container>
     </div>
   );
-});
+};
 
 export default Auth;
