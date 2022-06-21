@@ -54,58 +54,51 @@ const UsersAdmin: FC = () => {
 
       <Modal show={Boolean(shownId)} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Пользователь</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Check
-            onChange={(e) => setFormValue("isCreate", e.target.checked)}
-            checked={Boolean(state.isCreate)}
-            className="mb-3"
-            type={"checkbox"}
-            id={"default-checkbox"}
-            label={"Active"}
-          />
+
           <Form.Control
             onChange={(e) => setFormValue("name", e.target.value)}
             value={state.name}
             className="mb-3"
-            placeholder="Text"
+            placeholder="Имя"
           />
           <Form.Control
             onChange={(e) => setFormValue("age", e.target.value)}
             value={state.age}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Возраст"
           />
           <Form.Control
             onChange={(e) => setFormValue("phone", e.target.value)}
             value={state.phone}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Телефон"
           />
           <Form.Control
             onChange={(e) => setFormValue("district", e.target.value)}
             value={state.district}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Район"
           />
           <Form.Control
             onChange={(e) => setFormValue("street", e.target.value)}
             value={state.street}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Улица"
           />
           <Form.Control
             onChange={(e) => setFormValue("house", e.target.value)}
             value={state.house}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Дом"
           />
           <Form.Control
             onChange={(e) => setFormValue("flat", e.target.value)}
             value={state.flat}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Квартира"
           />
         </Modal.Body>
         <Modal.Footer>
@@ -116,13 +109,13 @@ const UsersAdmin: FC = () => {
               handleClose();
             }}
           >
-            Delete
+            Удалить
           </Button>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
+            Сохранить изменения
           </Button>
         </Modal.Footer>
       </Modal>
@@ -130,10 +123,10 @@ const UsersAdmin: FC = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Street</th>
-            <th>House</th>
+            <th className="text-center">Имя</th>
+            <th className="text-center">Телефон</th>
+            <th className="text-center">Улица</th>
+            <th className="text-center">Дом</th>
           </tr>
         </thead>
         <tbody>

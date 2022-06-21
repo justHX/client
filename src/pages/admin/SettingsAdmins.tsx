@@ -40,21 +40,24 @@ const SettingsAdmins: FC = () => {
 
       <Modal show={Boolean(shownId)} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Сообщение</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          Наименование
           <Form.Control
             onChange={(e) => setFormValue("name", e.target.value)}
+            disabled={true}
             value={state.name}
             className="mb-3"
-            placeholder="Text"
+            placeholder="Наименование"
           />
 
+          Текст
           <Form.Control
             onChange={(e) => setFormValue("value", e.target.value)}
             value={state.value}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Текст"
           />
         </Modal.Body>
         <Modal.Footer>
@@ -65,13 +68,13 @@ const SettingsAdmins: FC = () => {
               handleClose();
             }}
           >
-            Delete
+            Удалить
           </Button>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
+            Сохранить изменения
           </Button>
         </Modal.Footer>
       </Modal>
@@ -79,9 +82,8 @@ const SettingsAdmins: FC = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Value</th>
+            <th className="text-center">Наименование</th>
+            <th className="text-center">Текст</th>
           </tr>
         </thead>
         <tbody>
@@ -93,7 +95,6 @@ const SettingsAdmins: FC = () => {
                   handleShow(item.id);
                 }}
               >
-                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.value}</td>
               </tr>

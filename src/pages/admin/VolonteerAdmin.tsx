@@ -75,48 +75,38 @@ const VolonteerAdmin: FC = () => {
 
       <Modal show={Boolean(shownId)} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Волонтёр</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form.Check
-            onChange={(e) => setFormValue("isCreate", e.target.checked)}
-            checked={Boolean(state.isCreate)}
-            className="mb-3"
-            type={"checkbox"}
-            id={"default-checkbox"}
-            label={"Active"}
-          />
-
+          Имя
           <Form.Control
             onChange={(e) => setFormValue("name", e.target.value)}
             value={state.name}
             className="mb-3"
-            placeholder="Text"
+            placeholder="Имя"
           />
 
+          Телефон
           <Form.Control
             onChange={(e) => setFormValue("phone", e.target.value)}
             value={state.phone}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Телефон"
           />
-          <Form.Control
-            onChange={(e) => setFormValue("chatId", e.target.value)}
-            value={state.chatId}
-            className="mb-3"
-            placeholder="Description"
-          />
+          Пол
           <Form.Control
             onChange={(e) => setFormValue("gender", e.target.value)}
             value={state.gender}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Пол"
           />
+
+          Дата трудоустройства
           <Form.Control
             onChange={(e) => setFormValue("employedDate", e.target.value)}
             value={DateUtils.parseDate(state.employedDate, "yyyy-MM-dd")}
             className="mb-3"
-            placeholder="Description"
+            placeholder="EmployedDate"
             type="date"
           />
         </Modal.Body>
@@ -128,13 +118,13 @@ const VolonteerAdmin: FC = () => {
               handleClose();
             }}
           >
-            Delete
+            Удалить
           </Button>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
+            Сохранить изменения
           </Button>
         </Modal.Footer>
       </Modal>
@@ -142,11 +132,10 @@ const VolonteerAdmin: FC = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Gender</th>
-            <th>Date</th>
+            <th className="text-center">Имя</th>
+            <th className="text-center">Телефон</th>
+            <th className="text-center">Пол</th>
+            <th className="text-center">Дата трудоустройства</th>
           </tr>
         </thead>
         <tbody>
@@ -159,7 +148,6 @@ const VolonteerAdmin: FC = () => {
                   handleShow(item.id);
                 }}
               >
-                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.phone}</td>
                 <td>{item.gender}</td>

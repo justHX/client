@@ -13,9 +13,10 @@ interface Route {
 const routes: Route[] = [
   { route: ROUTES.ADMIN_ROUTE_USER, title: "Пользователи" },
   { route: ROUTES.ADMIN_ROUTE_VOLONTEER, title: "Волонтеры" },
-  { route: ROUTES.ADMIN_ROUTE_SETTINGS, title: "Админы" },
   { route: ROUTES.ADMIN_ROUTE_FEEDBACK, title: "Обратная связь" },
-  { route: ROUTES.ADMIN_ROUTE_TELEGRAMM, title: "Telegram бот" },
+  { route: ROUTES.ADMIN_ROUTE_TELEGRAMM, title: "Команды бота" },
+  { route: ROUTES.ADMIN_ROUTE_SETTINGS, title: "Сообщения бота" },
+
 ];
 
 const NavBarAdmin: FC = () => {

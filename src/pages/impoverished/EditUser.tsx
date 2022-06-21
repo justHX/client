@@ -4,7 +4,7 @@ import { Button, Card, Container, Form } from "react-bootstrap";
 import NavBarImpov from "components/NavBarImpov";
 
 import { useForm } from "hooks";
-import { UserInfo, useUserInfo, useUser } from "stores";
+import {UserInfo, useUser, useUserInfo} from "stores";
 
 const defaultValue = {
   id: "",
@@ -45,7 +45,7 @@ const EditUser: FC = () => {
         style={{ height: window.innerHeight - 54 }}
       >
         <Card style={{ width: 600 }} className="p-5">
-          <h2 className="m-auto text-center">Редактировать информацию</h2>
+          <h2 className="m-auto text-center">Редактировать контактные данные</h2>
           <Form className="d-flex flex-column">
             <Form.Control
               onChange={(e) => setFormValue("name", e.target.value)}
@@ -71,7 +71,7 @@ const EditUser: FC = () => {
               onChange={(e) => setFormValue("district", e.target.value)}
               value={state.district}
               className="mt-3"
-              placeholder="Дистрикт"
+              placeholder="Район"
             />
             <Form.Control
               onChange={(e) => setFormValue("street", e.target.value)}

@@ -1,10 +1,10 @@
-import { FC, useEffect, useMemo, useState } from "react";
-import { Button, Form, Modal, Table } from "react-bootstrap";
+import {FC, useEffect, useMemo, useState} from "react";
+import {Button, Form, Modal, Table} from "react-bootstrap";
 
-import { useFeedback, FeedbackAnswer } from "stores";
-import { NavBarAdmin } from "components";
-import { DateUtils } from "utils";
-import { useForm } from "hooks";
+import {FeedbackAnswer, useFeedback} from "stores";
+import {NavBarAdmin} from "components";
+import {DateUtils} from "utils";
+import {useForm} from "hooks";
 
 const defaultValue = { text: "" };
 
@@ -55,30 +55,24 @@ const FeedbackAdmin: FC = () => {
 
       <Modal show={Boolean(shownId)} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Обратная связь</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+
+          Текст обратной связи
           <Form.Control
             disabled={true}
             value={shownItem?.text}
             className="mb-3"
-            placeholder="Text"
+            placeholder="Текст обратной связи"
           />
 
+          Дата отправки
           <Form.Control
             disabled={true}
             value={shownItem?.sendDate}
             className="mb-3"
-            placeholder="Description"
-          />
-
-          <Form.Check
-            disabled={true}
-            checked={Boolean(shownItem?.volunteer.name)}
-            className="mb-3"
-            type={"checkbox"}
-            id={"default-checkbox"}
-            label={"Active"}
+            placeholder="Дата отправки"
           />
 
           <Form.Check
@@ -87,31 +81,35 @@ const FeedbackAdmin: FC = () => {
             className="mb-3"
             type={"checkbox"}
             id={"default-checkbox"}
-            label={"Active"}
+            label={"Отвечено"}
           />
 
+          <Form.Check
+              disabled={true}
+              checked={Boolean(shownItem?.isAnswered)}
+              className="mb-3"
+              type={"checkbox"}
+              id={"default-checkbox"}
+              label={"Прочитано"}
+          />
+
+          Дата прочтения
           <Form.Control
             disabled={true}
             value={shownItem?.readDate}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Дата чтения"
           />
 
-          <Form.Check
-            disabled={true}
-            checked={Boolean(shownItem?.isAnswered)}
-            className="mb-3"
-            type={"checkbox"}
-            id={"default-checkbox"}
-            label={"Active"}
-          />
-
+          Текст ответа
           <Form.Control
             disabled={true}
             value={shownItem?.answerText}
             className="mb-3"
-            placeholder="Description"
+            placeholder="Текст ответа"
           />
+
+          Дата ответа
           <Form.Control
             disabled={true}
             value={shownItem?.answerDate}
@@ -123,15 +121,15 @@ const FeedbackAdmin: FC = () => {
             onChange={(e) => setFormValue("text", e.target.value)}
             as="textarea"
             className="mb-3 mt-5"
-            placeholder="Text"
+            placeholder="Ведите текст ответа"
           />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Save Changes
+          <Button variant="primary" onClick={handleSubmit} disabled={!shownItem?.isAnswered}>
+            Отправить ответ
           </Button>
         </Modal.Footer>
       </Modal>
@@ -139,14 +137,13 @@ const FeedbackAdmin: FC = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Text</th>
-            <th>Send Date</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Expirience</th>
-            <th>Read</th>
-            <th>Answer</th>
+            <th className="text-center">Текст обратной связи</th>
+            <th className="text-center">Дата отправки</th>
+            <th className="text-center">Волонтёр</th>
+            <th className="text-center">Возраст</th>
+            <th className="text-center">Опыт</th>
+            <th className="text-center">Прочитано</th>
+            <th className="text-center">Отвечено</th>
           </tr>
         </thead>
         <tbody>
@@ -159,7 +156,6 @@ const FeedbackAdmin: FC = () => {
                   handleShow(item.id);
                 }}
               >
-                <td>{item.id}</td>
                 <td>{item.text}</td>
                 <td>{item.sendDate}</td>
 
@@ -167,8 +163,24 @@ const FeedbackAdmin: FC = () => {
                 <td>{item.botUser.age}</td>
                 <td>{item.botUser.expirience}</td>
 
-                <td>{item.isRead.toString()}</td>
-                <td>{item.isAnswered.toString()}</td>
+                <td>
+                  <Form.Check
+                      disabled={true}
+                      checked={Boolean(item.isRead)}
+                      className="mb-3 text-center"
+                      type={"checkbox"}
+                      id={"default-checkbox"}
+                  />
+                </td>
+                <td>
+                  <Form.Check
+                      disabled={true}
+                      checked={Boolean(item.isAnswered)}
+                      className="mb-3 text-center"
+                      type={"checkbox"}
+                      id={"default-checkbox"}
+                  />
+                </td>
               </tr>
             );
           })}

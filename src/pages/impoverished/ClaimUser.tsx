@@ -45,9 +45,10 @@ const ClaimUser: FC = () => {
 
       <Modal show={Boolean(shownId)} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Информация о заявке</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          Имя
           <Form.Control
             disabled={true}
             value={shownItem?.name}
@@ -55,6 +56,7 @@ const ClaimUser: FC = () => {
             placeholder="Text"
           />
 
+          Возраст
           <Form.Control
             disabled={true}
             value={shownItem?.age}
@@ -62,38 +64,43 @@ const ClaimUser: FC = () => {
             placeholder="Text"
           />
 
+          Телефон
           <Form.Control
             disabled={true}
             value={shownItem?.phone}
             className="mb-3"
             placeholder="Text"
           />
+
+          Улица
           <Form.Control
             disabled={true}
             value={shownItem?.street}
             className="mb-3"
             placeholder="Text"
           />
+          Дом
           <Form.Control
             disabled={true}
             value={shownItem?.house}
             className="mb-3"
             placeholder="Text"
           />
+          Квартира
           <Form.Control
             disabled={true}
             value={shownItem?.flat}
             className="mb-3"
             placeholder="Text"
           />
-
+          Волонтёр
           <Form.Control
             disabled={true}
             value={shownItem?.volonteerName}
             className="mb-3"
             placeholder="Description"
           />
-
+          Возраст волонтёра
           <Form.Control
             disabled={true}
             value={shownItem?.volonteerAge}
@@ -101,6 +108,7 @@ const ClaimUser: FC = () => {
             placeholder="Description"
           />
 
+          Телефон волонтёра
           <Form.Control
             disabled={true}
             value={shownItem?.volonteerPhone}
@@ -114,7 +122,7 @@ const ClaimUser: FC = () => {
             className="mb-3"
             type={"checkbox"}
             id={"default-checkbox"}
-            label={"Active"}
+            label={"Заявка завершена"}
           />
 
           <Form.Check
@@ -123,9 +131,10 @@ const ClaimUser: FC = () => {
             className="mb-3"
             type={"checkbox"}
             id={"default-checkbox"}
-            label={"Active"}
+            label={"В процессе"}
           />
 
+          Дата завершения
           <Form.Control
             disabled={true}
             value={shownItem?.taskCompletionDate}
@@ -133,6 +142,7 @@ const ClaimUser: FC = () => {
             placeholder="Description"
           />
 
+          Час начала периода помощи
           <Form.Control
             disabled={true}
             value={shownItem?.startHour}
@@ -140,6 +150,7 @@ const ClaimUser: FC = () => {
             placeholder="Description"
           />
 
+          Час окончания периода помощи
           <Form.Control
             disabled={true}
             value={shownItem?.endHour}
@@ -147,6 +158,7 @@ const ClaimUser: FC = () => {
             placeholder="Description"
           />
 
+          Комментарий
           <Form.Control
             disabled={true}
             value={shownItem?.description}
@@ -157,7 +169,7 @@ const ClaimUser: FC = () => {
           {shownItem?.subTasks?.map((item, i) => {
             return (
               <div>
-                SubTasks
+                Подзадача {++i}
                 <Form.Control
                   disabled={true}
                   value={item.title}
@@ -176,7 +188,7 @@ const ClaimUser: FC = () => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
-            Close
+            Закрыть
           </Button>
         </Modal.Footer>
       </Modal>
@@ -184,11 +196,10 @@ const ClaimUser: FC = () => {
       <Table striped bordered hover variant="dark">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Completion Date</th>
-            <th>Street</th>
-            <th>House</th>
+            <th className="text-center">ФИО</th>
+            <th className="text-center">Дата завершения</th>
+            <th className="text-center">Улица</th>
+            <th className="text-center">Дом</th>
           </tr>
         </thead>
         <tbody>
@@ -201,7 +212,6 @@ const ClaimUser: FC = () => {
                   handleShow(item.id);
                 }}
               >
-                <td>{item.id}</td>
                 <td>{item.name}</td>
                 <td>{item.taskCompletionDate}</td>
                 <td>{item.street}</td>
