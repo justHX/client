@@ -3,12 +3,14 @@ import NavBarImpov from "../../components/NavBarImpov";
 import {Button, Form, Modal, Table} from "react-bootstrap";
 import {useClaim} from "../../stores/claim";
 import {DateUtils} from "utils";
+import {useUser} from "../../stores";
 
 const ClaimUser: FC = () => {
+  const {user} = useUser();
   const { claim, fetchClaimList, fetchClaimsById } = useClaim();
 
   useEffect(() => {
-    fetchClaimList();
+    fetchClaimList(user.idUser);
   }, [fetchClaimList]);
 
   const [shownId, setShownId] = useState<string>("");

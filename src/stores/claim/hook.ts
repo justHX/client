@@ -10,9 +10,9 @@ import type {Claim, ClaimAll} from "./types";
 export function useClaim() {
   const claim = useStore($claim);
 
-  const fetchClaimList = useCallback(async () => {
+  const fetchClaimList = useCallback(async (id: string) => {
     try {
-      const result = await API.get<Claim[]>("/User/Tasks");
+      const result = await API.get<Claim[]>(`/User/Tasks?id=${id}`);
 
       setList(result?.data || []);
     } catch (e) {
