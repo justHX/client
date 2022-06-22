@@ -77,7 +77,7 @@ const FeedbackAdmin: FC = () => {
 
           <Form.Check
             disabled={true}
-            checked={Boolean(shownItem?.isRead)}
+            checked={shownItem?.isAnswered}
             className="mb-3"
             type={"checkbox"}
             id={"default-checkbox"}
@@ -86,7 +86,7 @@ const FeedbackAdmin: FC = () => {
 
           <Form.Check
               disabled={true}
-              checked={Boolean(shownItem?.isAnswered)}
+              checked={shownItem?.isRead}
               className="mb-3"
               type={"checkbox"}
               id={"default-checkbox"}
@@ -166,7 +166,7 @@ const FeedbackAdmin: FC = () => {
                 <td>
                   <Form.Check
                       disabled={true}
-                      checked={Boolean(item.isRead)}
+                      checked={item.isRead}
                       className="mb-3 text-center"
                       type={"checkbox"}
                       id={"default-checkbox"}
@@ -175,7 +175,7 @@ const FeedbackAdmin: FC = () => {
                 <td>
                   <Form.Check
                       disabled={true}
-                      checked={Boolean(item.isAnswered)}
+                      checked={item.isAnswered}
                       className="mb-3 text-center"
                       type={"checkbox"}
                       id={"default-checkbox"}
