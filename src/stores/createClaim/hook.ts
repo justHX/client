@@ -13,6 +13,7 @@ export function useCreateClaim() {
 
     const createClaimInfo = useCallback(
         async (
+            userId: string,
             taskCompletionDate: string,
             startHour: number,
             endHour: number,
@@ -25,7 +26,7 @@ export function useCreateClaim() {
             ]
         ) => {
             try {
-                await API.post("/User/CreateTaskInfo", {
+                await API.post(`/User/CreateTaskInfo?id=${userId}`, {
                     taskCompletionDate: taskCompletionDate,
                     startHour: startHour,
                     endHour: endHour,

@@ -2,9 +2,12 @@ import {FC, useState} from "react";
 import {Button, Card, Container, Form} from "react-bootstrap";
 
 import NavBarImpov from "components/NavBarImpov";
-import {useCreateClaim} from "stores";
+import {useCreateClaim, useUser, useUserInfo} from "stores";
 
 const CreateClaimUser: FC = () => {
+
+    const {user} = useUser();
+
     const {createClaimInfo} = useCreateClaim();
 
     const [taskCompletionDate, setTaskCompletionDate] = useState<string>("");
@@ -16,7 +19,8 @@ const CreateClaimUser: FC = () => {
 
     const click = () => {
 
-       const num = createClaimInfo(
+        const num = createClaimInfo(
+            user.idUser,
             taskCompletionDate,
             startHour,
             endHour,
@@ -30,7 +34,6 @@ const CreateClaimUser: FC = () => {
         )
         alert(num)
     }
-
 
 
     return (
