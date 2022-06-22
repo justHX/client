@@ -81,7 +81,7 @@ const FeedbackAdmin: FC = () => {
             className="mb-3"
             type={"checkbox"}
             id={"default-checkbox"}
-            label={"Отвечено"}
+            label={"Прочитано"}
           />
 
           <Form.Check
@@ -90,7 +90,7 @@ const FeedbackAdmin: FC = () => {
               className="mb-3"
               type={"checkbox"}
               id={"default-checkbox"}
-              label={"Прочитано"}
+              label={"Отвечено"}
           />
 
           Дата прочтения
@@ -112,7 +112,7 @@ const FeedbackAdmin: FC = () => {
           Дата ответа
           <Form.Control
             disabled={true}
-            value={shownItem?.answerDate}
+            value={shownItem?.answerDate || ""}
             className="mb-3"
             placeholder="Description"
           />
@@ -142,8 +142,8 @@ const FeedbackAdmin: FC = () => {
             <th className="text-center">Волонтёр</th>
             <th className="text-center">Возраст</th>
             <th className="text-center">Опыт</th>
-            <th className="text-center">Прочитано</th>
             <th className="text-center">Отвечено</th>
+            <th className="text-center">Прочитано</th>
           </tr>
         </thead>
         <tbody>
