@@ -65,25 +65,25 @@ const CreateClaimUser: FC = () => {
 
                         <Form.Control
                             className="mt-3"
-                            placeholder="Введите описание подзадачи"
+                            placeholder="Введите описание задачи"
                             onChange={(e) => setDescription(e.target.value)}
                         />
 
                         <Form.Control
                             className="mt-3"
-                            placeholder="Введите название продуктов питания"
+                            placeholder="Введите название продуктов питания (через запятую)"
                             onChange={(e) => setFoodstuff(e.target.value)}
                         />
                         <Form.Control
                             onChange={(e) => setMedicine(e.target.value)}
                             className="mt-3"
-                            placeholder="Введите название медикаментов"
+                            placeholder="Введите название медикаментов (через запятую)"
                         />
 
                         <Form.Control
                             onChange={(e) => setEssentials(e.target.value)}
                             className="mt-3"
-                            placeholder="Введите предметы первой необходимости"
+                            placeholder="Введите предметы первой необходимости (через запятую)"
                         />
 
                         <Button
