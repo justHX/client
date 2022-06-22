@@ -5,8 +5,6 @@ import {API} from "API";
 
 import {$createClaim} from "./store";
 
-import {CreateTaskInfo} from "./types";
-
 export function useCreateClaim() {
     const createClaim = useStore($createClaim);
 
@@ -26,7 +24,7 @@ export function useCreateClaim() {
             ]
         ) => {
             try {
-                const answer = await API.post(`/User/CreateTaskInfo?id=${userId}`, {
+                 const answer = await API.post<string>(`/User/CreateTaskInfo?id=${userId}`, {
                     taskCompletionDate: taskCompletionDate,
                     startHour: startHour,
                     endHour: endHour,
@@ -34,8 +32,7 @@ export function useCreateClaim() {
                     subTasks: subTasks
                 });
 
-                alert(answer?.data)
-
+                localStorage.setItem("text", answer?.data || "")
             } catch (e) {
                 console.error(e);
             }

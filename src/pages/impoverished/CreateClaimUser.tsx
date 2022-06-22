@@ -1,5 +1,5 @@
 import {FC, useState} from "react";
-import {Button, Card, Container, Form} from "react-bootstrap";
+import {Alert, Button, Card, Container, Form} from "react-bootstrap";
 
 import NavBarImpov from "components/NavBarImpov";
 import {useCreateClaim, useUser, useUserInfo} from "stores";
@@ -19,7 +19,7 @@ const CreateClaimUser: FC = () => {
 
     const click = () => {
 
-        const num = createClaimInfo(
+         createClaimInfo(
             user.idUser,
             taskCompletionDate,
             startHour,
@@ -31,13 +31,15 @@ const CreateClaimUser: FC = () => {
                     type
                 }
             ]
-        )
+        );
+
 
     }
 
 
     return (
         <div>
+            <Alert show={Boolean(localStorage.getItem("text"))} variant="info">This is an info alert — check it out!</Alert>
             <NavBarImpov/>
 
             <Container
