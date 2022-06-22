@@ -16,20 +16,19 @@ export function useCreateClaim() {
             startHour: number,
             endHour: number,
             description: string,
-            subTasks: [
-                {
-                    title: string,
-                    type: number
-                }
-            ]
+            foodstuff: string,
+            medicine: string,
+            essentials: string
         ) => {
             try {
-                 const answer = await API.post<string>(`/User/CreateTaskInfo?id=${userId}`, {
+                const answer = await API.post<string>(`/User/CreateTaskInfo?id=${userId}`, {
                     taskCompletionDate: taskCompletionDate,
                     startHour: startHour,
                     endHour: endHour,
                     description: description,
-                    subTasks: subTasks
+                    foodstuff: foodstuff,
+                    medicine: medicine,
+                    essentials: essentials
                 });
 
                 alert(`Запомните, пожалуйста, данный код:  ${answer?.data}. Он потребуется волонтёру для того, чтобы успешно завершить заявку.`)

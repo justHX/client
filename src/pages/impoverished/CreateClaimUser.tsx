@@ -14,28 +14,23 @@ const CreateClaimUser: FC = () => {
     const [startHour, setStartHour] = useState<number>(0);
     const [endHour, setEndHour] = useState<number>(0);
     const [description, setDescription] = useState<string>("");
-    const [title, setTitle] = useState<string>("");
-    const [type, setType] = useState<number>(0);
+    const [foodstuff, setFoodstuff] = useState<string>("");
+    const [medicine, setMedicine] = useState<string>("");
+    const [essentials, setEssentials] = useState<string>("");
 
     const click = () => {
 
-         createClaimInfo(
+        createClaimInfo(
             user.idUser,
             taskCompletionDate,
             startHour,
             endHour,
             description,
-            [
-                {
-                    title,
-                    type
-                }
-            ]
+            foodstuff,
+            medicine,
+            essentials
         );
-
-
     }
-
 
     return (
         <div>
@@ -70,19 +65,25 @@ const CreateClaimUser: FC = () => {
 
                         <Form.Control
                             className="mt-3"
-                            placeholder="Введите название подзадачи"
-                            onChange={(e) => setTitle(e.target.value)}
-                        />
-                        <Form.Control
-                            className="mt-3"
                             placeholder="Введите описание подзадачи"
                             onChange={(e) => setDescription(e.target.value)}
                         />
+
                         <Form.Control
-                            onChange={(e) => setType(Number(e.target.value))}
-                            type="number"
                             className="mt-3"
-                            placeholder="Введите тип подзадачи"
+                            placeholder="Введите название продуктов питания"
+                            onChange={(e) => setFoodstuff(e.target.value)}
+                        />
+                        <Form.Control
+                            onChange={(e) => setMedicine(e.target.value)}
+                            className="mt-3"
+                            placeholder="Введите название медикаментов"
+                        />
+
+                        <Form.Control
+                            onChange={(e) => setEssentials(e.target.value)}
+                            className="mt-3"
+                            placeholder="Введите предметы первой необходимости"
                         />
 
                         <Button
