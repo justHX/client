@@ -41,11 +41,19 @@ const VolonteerAuth: FC = () => {
         Введите данные для регистрации в Telegram-боте
       </h2>
       <Form className="d-flex flex-column">
-        <Form.Control
-          className="mt-3"
-          placeholder="Введите район"
-          onChange={(e) => setDistrict(e.target.value)}
-        />
+
+        <Form.Select
+            className="mt-3"
+            onChange={(e) => setDistrict(e.target.value)}
+        >
+          <option value="1">Железнодорожный</option>
+          <option value="2">Коминтерновский</option>
+          <option value="3">Левобережный</option>
+          <option value="4">Ленинский</option>
+          <option value="5">Советский</option>
+          <option value="6">Центральный</option>
+        </Form.Select>
+
         <Form.Control
           className="mt-3"
           placeholder="Введите улицу"
