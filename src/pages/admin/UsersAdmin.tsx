@@ -58,42 +58,52 @@ const UsersAdmin: FC = () => {
         </Modal.Header>
         <Modal.Body>
 
+          ФИО
           <Form.Control
-            onChange={(e) => setFormValue("name", e.target.value)}
+            onChange={(e) => {
+              setFormValue("name", e.target.value);
+              setFormValue("id",shownId);
+            }}
             value={state.name}
             className="mb-3"
             placeholder="Имя"
           />
+          Возраст
           <Form.Control
             onChange={(e) => setFormValue("age", e.target.value)}
             value={state.age}
             className="mb-3"
             placeholder="Возраст"
           />
+          Телефон
           <Form.Control
             onChange={(e) => setFormValue("phone", e.target.value)}
             value={state.phone}
             className="mb-3"
             placeholder="Телефон"
           />
+          Район
           <Form.Control
             onChange={(e) => setFormValue("district", e.target.value)}
             value={state.district}
             className="mb-3"
             placeholder="Район"
           />
+          Улица
           <Form.Control
             onChange={(e) => setFormValue("street", e.target.value)}
             value={state.street}
             className="mb-3"
             placeholder="Улица"
           />
+          Дом
           <Form.Control
             onChange={(e) => setFormValue("house", e.target.value)}
             value={state.house}
             className="mb-3"
             placeholder="Дом"
           />
+          Квартира
           <Form.Control
             onChange={(e) => setFormValue("flat", e.target.value)}
             value={state.flat}
