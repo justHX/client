@@ -16,6 +16,12 @@ const FeedbackAdmin: FC = () => {
   const handleClose = () => setShownId("");
   const handleShow = (id: string) => setShownId(id);
 
+  const parsedFeedback = useMemo(
+      () => feedback.list.map((feedb) => ({...feedb, sendDate: DateUtils.parseDate(feedb.sendDate),
+      })),
+      [feedback.list]
+  );
+
   const shownItem = useMemo(() => {
     if (feedback.item) {
       return {
@@ -29,20 +35,12 @@ const FeedbackAdmin: FC = () => {
     }
   }, [feedback.item]);
 
+  const { state, setFormValue } = useForm<FeedbackAnswer>(defaultValue);
+
   useEffect(() => {
     fetchFeedbackList();
   }, [fetchFeedbackList]);
 
-  const parsedFeedback = useMemo(
-    () =>
-      feedback.list.map((feedb) => ({
-        ...feedb,
-        sendDate: DateUtils.parseDate(feedb.sendDate),
-      })),
-    [feedback.list]
-  );
-
-  const { state, setFormValue } = useForm<FeedbackAnswer>(defaultValue);
 
   const handleSubmit = () => {
     updateFeedback(shownId, state);

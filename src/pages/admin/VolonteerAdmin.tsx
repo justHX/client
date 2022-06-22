@@ -52,10 +52,7 @@ const VolonteerAdmin: FC = () => {
   }, [fetchVolunteersList]);
 
   const parsedVolunteers = useMemo(
-    () =>
-      volonteers.list.map((volunteer) => ({
-        ...volunteer,
-        employedDate: DateUtils.parseDate(volunteer.employedDate),
+    () => volonteers.list.map((volunteer) => ({...volunteer, employedDate: DateUtils.parseDate(volunteer.employedDate),
       })),
     [volonteers.list]
   );
