@@ -32,7 +32,7 @@ const CreateClaimUser: FC = () => {
                 }
             ]
         )
-        alert(num)
+
     }
 
 

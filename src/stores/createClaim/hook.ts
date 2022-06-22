@@ -26,13 +26,15 @@ export function useCreateClaim() {
             ]
         ) => {
             try {
-                await API.post(`/User/CreateTaskInfo?id=${userId}`, {
+                const answer = await API.post(`/User/CreateTaskInfo?id=${userId}`, {
                     taskCompletionDate: taskCompletionDate,
                     startHour: startHour,
                     endHour: endHour,
                     description: description,
                     subTasks: subTasks
                 });
+
+                alert(answer?.data)
 
             } catch (e) {
                 console.error(e);
