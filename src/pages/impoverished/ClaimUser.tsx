@@ -210,7 +210,7 @@ const ClaimUser: FC = () => {
               <tr
                 key={i}
                 onClick={() => {
-                  fetchClaimsById(shownId);
+                  fetchClaimsById(item.id);
                   handleShow(item.id);
                 }}
               >
