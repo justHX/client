@@ -45,7 +45,7 @@ export function useUserAdmin() {
     const deleteUserAdminById = useCallback(
         async (id: string) => {
             try {
-                await API.delete(`/Admin/User/Delete/${id}`);
+                await API.delete(`/Admin/User/Delete?id=${id}`);
                 await fetchUserAdminList();
             } catch (e) {
                 console.error(e);

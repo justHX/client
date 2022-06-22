@@ -45,7 +45,7 @@ export function useSettings() {
   const deleteSettingsById = useCallback(
     async (id: string) => {
       try {
-        await API.delete(`/Admin/Settings/${id}`);
+        await API.delete(`/Admin/Settings/Delete?id=${id}`);
         await fetchSettingsList();
       } catch (e) {
         console.error(e);

@@ -50,7 +50,7 @@ export function useVolonteers() {
     async (id: string) => {
       try {
         const params = { params: { id } };
-        await API.post("/Admin/Volunteer/Update", params);
+        await API.post("/Admin/Volunteer/Delete", params);
         await fetchVolunteersList();
       } catch (e) {
         console.error(e);
