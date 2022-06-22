@@ -144,7 +144,7 @@ const VolonteerAdmin: FC = () => {
               <tr
                 key={i}
                 onClick={() => {
-                  fetchVolunteerById(shownId);
+                  fetchVolunteerById(item.id);
                   handleShow(item.id);
                 }}
               >

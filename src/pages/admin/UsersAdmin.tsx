@@ -145,7 +145,7 @@ const UsersAdmin: FC = () => {
               <tr
                 key={i}
                 onClick={() => {
-                  fetchUserAdminById(shownId);
+                  fetchUserAdminById(item.id);
                   handleShow(item.id);
                 }}
               >
