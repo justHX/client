@@ -3,10 +3,13 @@ import {Alert, Button, Card, Container, Form} from "react-bootstrap";
 
 import NavBarImpov from "components/NavBarImpov";
 import {useCreateClaim, useUser, useUserInfo} from "stores";
+import {useNavigate} from "react-router-dom";
+import {ROUTES} from "../../const";
 
 const CreateClaimUser: FC = () => {
 
     const {user} = useUser();
+    const navigate = useNavigate();
 
     const {createClaimInfo} = useCreateClaim();
 
@@ -30,6 +33,8 @@ const CreateClaimUser: FC = () => {
             medicine,
             essentials
         );
+
+        navigate(ROUTES.IMPROVERISHED_ROUTE_STORY, { replace: true });
     }
 
     return (
