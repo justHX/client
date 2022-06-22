@@ -32,7 +32,7 @@ export function useCreateClaim() {
                     subTasks: subTasks
                 });
 
-                localStorage.setItem("text", answer?.data || "")
+                alert(`Запомните, пожалуйста, данный код:  ${answer?.data}. Он потребуется волонтёру для того, чтобы успешно завершить заявку`)
             } catch (e) {
                 console.error(e);
             }

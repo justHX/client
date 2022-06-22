@@ -39,7 +39,6 @@ const CreateClaimUser: FC = () => {
 
     return (
         <div>
-            <Alert show={Boolean(localStorage.getItem("text"))} variant="info">This is an info alert — check it out!</Alert>
             <NavBarImpov/>
 
             <Container
