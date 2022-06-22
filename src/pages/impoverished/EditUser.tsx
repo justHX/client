@@ -73,6 +73,7 @@ const EditUser: FC = () => {
             <Form.Select
                 className="mt-3"
                 onChange={(e) => setFormValue("district", e.target.value)}
+                value={state.district}
             >
               <option value="1">Железнодорожный</option>
               <option value="2">Коминтерновский</option>
