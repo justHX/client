@@ -47,7 +47,7 @@ const EditUser: FC = () => {
         className="d-flex justify-content-center align-items-center"
         style={{ height: window.innerHeight - 54 }}
       >
-        <Card style={{ width: 600 }} className="p-5">
+        <Card style={{ width: 800 }} className="p-5">
           <h2 className="m-auto text-center">Редактировать контактные данные</h2>
           <Form className="d-flex flex-column">
             <Form.Control

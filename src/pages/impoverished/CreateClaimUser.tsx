@@ -16,7 +16,7 @@ const CreateClaimUser: FC = () => {
 
     const click = () => {
 
-        createClaimInfo(
+       const num = createClaimInfo(
             taskCompletionDate,
             startHour,
             endHour,
@@ -28,7 +28,10 @@ const CreateClaimUser: FC = () => {
                 }
             ]
         )
+        alert(num)
     }
+
+
 
     return (
         <div>
