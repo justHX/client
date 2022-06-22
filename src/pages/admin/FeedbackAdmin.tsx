@@ -128,7 +128,7 @@ const FeedbackAdmin: FC = () => {
           <Button variant="secondary" onClick={handleClose}>
             Закрыть
           </Button>
-          <Button variant="primary" onClick={handleSubmit} disabled={!shownItem?.isAnswered}>
+          <Button variant="primary" onClick={handleSubmit} disabled={shownItem?.isAnswered}>
             Отправить ответ
           </Button>
         </Modal.Footer>
