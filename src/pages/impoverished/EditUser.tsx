@@ -36,6 +36,9 @@ const EditUser: FC = () => {
     updateUserInfo(newState);
   };
 
+  console.log(user);
+  console.log(localStorage.getItem("userId"));
+
   return (
     <div>
       <NavBarImpov />

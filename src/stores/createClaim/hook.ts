@@ -12,9 +12,26 @@ export function useCreateClaim() {
 
 
     const createClaimInfo = useCallback(
-        async (createTaskInfo: CreateTaskInfo) => {
+        async (
+            taskCompletionDate: string,
+            startHour: number,
+            endHour: number,
+            description: string,
+            subTasks: [
+                {
+                    title: string,
+                    type: number
+                }
+            ]
+        ) => {
             try {
-                await API.post("/User/CreateTaskInfo", createTaskInfo);
+                await API.post("/User/CreateTaskInfo", {
+                    taskCompletionDate: taskCompletionDate,
+                    startHour: startHour,
+                    endHour: endHour,
+                    description: description,
+                    subTasks: subTasks
+                });
 
             } catch (e) {
                 console.error(e);

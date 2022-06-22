@@ -28,6 +28,7 @@ export function useUser() {
       setUserRole(UserRole.USER);
       setIdUser(userId?.data.id || "")
       localStorage.setItem("isAuth", "true");
+      localStorage.setItem("userId", userId!.data.id);
       localStorage.setItem("role", UserRole.USER.toString());
     } catch (e) {
       throw e;

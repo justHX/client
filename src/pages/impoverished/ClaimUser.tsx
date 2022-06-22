@@ -1,8 +1,8 @@
-import { FC, useEffect, useMemo, useState } from "react";
+import {FC, useEffect, useMemo, useState} from "react";
 import NavBarImpov from "../../components/NavBarImpov";
-import { Button, Form, Modal, Table } from "react-bootstrap";
-import { useClaim } from "../../stores/claim";
-import { DateUtils } from "utils";
+import {Button, Form, Modal, Table} from "react-bootstrap";
+import {useClaim} from "../../stores/claim";
+import {DateUtils} from "utils";
 
 const ClaimUser: FC = () => {
   const { claim, fetchClaimList, fetchClaimsById } = useClaim();
