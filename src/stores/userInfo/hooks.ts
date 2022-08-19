@@ -12,7 +12,7 @@ export function useUserInfo() {
   const fetchUserInfoById = useCallback(async (id: string) => {
     try {
       const params = { params: { id } };
-      const result = await API.get<UserInfo>("/User/Info", params);
+      const result = await API.get<UserInfo>("/user/info", params);
 
       setItem(result?.data);
     } catch (e) {
@@ -22,7 +22,7 @@ export function useUserInfo() {
 
   const updateUserInfo = useCallback(async (userInfo: UserInfo) => {
     try {
-      await API.post("/User/Update", userInfo);
+      await API.post("/user/update", userInfo);
     } catch (e) {
       console.error(e);
     }

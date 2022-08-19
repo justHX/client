@@ -21,7 +21,7 @@ export function useCreateClaim() {
             essentials: string
         ) => {
             try {
-                const answer = await API.post<string>(`/User/CreateTaskInfo?id=${userId}`, {
+                const answer = await API.post<string>(`/user/createTaskInfo?id=${userId}`, {
                     taskCompletionDate: taskCompletionDate,
                     startHour: startHour,
                     endHour: endHour,

@@ -1,9 +1,9 @@
 import {FC, useEffect, useMemo, useState} from "react";
-import NavBarImpov from "../../components/NavBarImpov";
+import NavBarImpov from "components/NavBarImpov";
 import {Button, Form, Modal, Table} from "react-bootstrap";
-import {useClaim} from "../../stores/claim";
+import {useClaim} from "stores/claim";
 import {DateUtils} from "utils";
-import {useUser} from "../../stores";
+import {useUser} from "stores";
 
 const ClaimUser: FC = () => {
   const {user} = useUser();
@@ -98,14 +98,14 @@ const ClaimUser: FC = () => {
           Волонтёр
           <Form.Control
             disabled={true}
-            value={shownItem?.volonteerName}
+            value={shownItem?.volunteerName}
             className="mb-3"
             placeholder="Description"
           />
           Возраст волонтёра
           <Form.Control
             disabled={true}
-            value={shownItem?.volonteerAge}
+            value={shownItem?.volunteerAge}
             className="mb-3"
             placeholder="Description"
           />
@@ -113,7 +113,7 @@ const ClaimUser: FC = () => {
           Телефон волонтёра
           <Form.Control
             disabled={true}
-            value={shownItem?.volonteerPhone}
+            value={shownItem?.volunteerPhone}
             className="mb-3"
             placeholder="Description"
           />

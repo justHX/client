@@ -1,11 +1,11 @@
 import { FC } from "react";
 
-const backgroundURL = "https://gagadget.com/media/post_big/36.jpg";
+const backgroundURL = "https://img3.goodfon.ru/original/1920x1080/e/6e/telegram-free-telegram-is-a.jpg";
 
 const VolonteerPage: FC = () => {
   const wrapperStyle = { backgroundImage: `url('${backgroundURL}')` };
   const titleStyle = { height: window.innerHeight - 40 };
-
+  https://www.goodfon.ru/download/telegram-free-telegram-is-a/1920x1080/
   return (
     <div
       className="container-fluid d-flex h-100 justify-content-center align-items-center p-0"

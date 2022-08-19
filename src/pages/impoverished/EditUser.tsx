@@ -75,12 +75,12 @@ const EditUser: FC = () => {
                 onChange={(e) => setFormValue("district", e.target.value)}
                 value={state.district}
             >
-              <option value="1">Железнодорожный</option>
-              <option value="2">Коминтерновский</option>
-              <option value="3">Левобережный</option>
-              <option value="4">Ленинский</option>
-              <option value="5">Советский</option>
-              <option value="6">Центральный</option>
+              <option value="Железнодорожный">Железнодорожный</option>
+              <option value="Коминтерновский">Коминтерновский</option>
+              <option value="Левобережный">Левобережный</option>
+              <option value="Ленинский">Ленинский</option>
+              <option value="Советский">Советский</option>
+              <option value="Центральный">Центральный</option>
             </Form.Select>
 
             <Form.Control

@@ -12,7 +12,7 @@ export function useFeedback() {
 
     const fetchFeedbackList = useCallback(async () => {
         try {
-            const result = await API.get<FeedbackListItem[]>("/Admin/Feedback/List");
+            const result = await API.get<FeedbackListItem[]>("/admin/feedback/list");
 
             setList(result?.data || []);
         } catch (e) {
@@ -22,7 +22,7 @@ export function useFeedback() {
 
     const fetchFeedbackById = useCallback(async (id: string) => {
         try {
-            const result = await API.get<FeedbackDetailItem>(`/Admin/Feedback/Info?id=${id}`);
+            const result = await API.get<FeedbackDetailItem>(`/admin/feedback/info?id=${id}`);
 
             setItem(result?.data);
         } catch (e) {
@@ -33,7 +33,7 @@ export function useFeedback() {
     const updateFeedback = useCallback(
         async (id: string, text: FeedbackAnswer) => {
             try {
-                await API.post(`/Admin/Feedback/SendAnswer?id=${id}`, text);
+                await API.post(`/admin/feedback/send/answer?id=${id}`, text);
                 await fetchFeedbackList();
             } catch (e) {
                 console.error(e);

@@ -159,7 +159,7 @@ const FeedbackAdmin: FC = () => {
 
                 <td>{item.botUser.name}</td>
                 <td>{item.botUser.age}</td>
-                <td>{item.botUser.expirience}</td>
+                <td>{item.botUser.experience}</td>
 
                 <td>
                   <Form.Check

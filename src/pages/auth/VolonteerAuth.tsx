@@ -11,9 +11,10 @@ const VolonteerAuth: FC = () => {
   const [house, setHouse] = useState("");
   const [flat, setFlat] = useState("");
   const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [expirience, setExpirience] = useState("");
+  const [age, setAge] = useState(0);
+  const [expirience, setExpirience] = useState(0);
   const [phone, setPhone] = useState("");
+  const [gender, setGender] = useState("");
 
   const navigate = useNavigate();
 
@@ -27,7 +28,8 @@ const VolonteerAuth: FC = () => {
         name,
         age,
         expirience,
-        phone
+        phone,
+        gender
       );
       navigate(ROUTES.VOLONTEER_ROUTE, { replace: true });
     } catch (e) {
@@ -46,12 +48,12 @@ const VolonteerAuth: FC = () => {
             className="mt-3"
             onChange={(e) => setDistrict(e.target.value)}
         >
-          <option value="1">Железнодорожный</option>
-          <option value="2">Коминтерновский</option>
-          <option value="3">Левобережный</option>
-          <option value="4">Ленинский</option>
-          <option value="5">Советский</option>
-          <option value="6">Центральный</option>
+          <option value="Железнодорожный">Железнодорожный</option>
+          <option value="Коминтерновский">Коминтерновский</option>
+          <option value="Левобережный">Левобережный</option>
+          <option value="Ленинский">Ленинский</option>
+          <option value="Советский">Советский</option>
+          <option value="Центральный">Центральный</option>
         </Form.Select>
 
         <Form.Control
@@ -76,19 +78,29 @@ const VolonteerAuth: FC = () => {
         />
         <Form.Control
           className="mt-3"
+          type="number"
           placeholder="Введите возраст"
-          onChange={(e) => setAge(e.target.value)}
+          onChange={(e) => setAge(Number(e.target.value))}
         />
         <Form.Control
           className="mt-3"
+          type="number"
           placeholder="Введите опыт"
-          onChange={(e) => setExpirience(e.target.value)}
+          onChange={(e) => setExpirience(Number(e.target.value))}
         />
         <Form.Control
           className="mt-3"
           placeholder="Введите телефон"
           onChange={(e) => setPhone(e.target.value)}
         />
+
+        <Form.Select
+            className="mt-3"
+            onChange={(e) => setGender(e.target.value)}
+        >
+          <option value="Мужской">Мужской</option>
+          <option value="Женский">Женский</option>
+        </Form.Select>
 
         <Button
           style={{ width: 150 }}

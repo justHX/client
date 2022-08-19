@@ -78,6 +78,7 @@ const ImpoverishedAuth: FC = () => {
             />
             <Form.Control
               className="mt-3"
+              type="number"
               placeholder="Введите возраст"
               onChange={(e) => setAge(e.target.value)}
             />
@@ -91,12 +92,12 @@ const ImpoverishedAuth: FC = () => {
                 className="mt-3"
                 onChange={(e) => setDistrict(e.target.value)}
             >
-              <option value="1">Железнодорожный</option>
-              <option value="2">Коминтерновский</option>
-              <option value="3">Левобережный</option>
-              <option value="4">Ленинский</option>
-              <option value="5">Советский</option>
-              <option value="6">Центральный</option>
+              <option value="Железнодорожный">Железнодорожный</option>
+              <option value="Коминтерновский">Коминтерновский</option>
+              <option value="Левобережный">Левобережный</option>
+              <option value="Ленинский">Ленинский</option>
+              <option value="Советский">Советский</option>
+              <option value="Центральный">Центральный</option>
             </Form.Select>
 
             <Form.Control

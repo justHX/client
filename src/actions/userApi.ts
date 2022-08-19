@@ -11,7 +11,7 @@ export const registerImpov = (
   login: any,
   password: any
 ) => {
-  return API.post("/User/Register", {
+  return API.post("/user/register", {
     name,
     age,
     phone,
@@ -30,18 +30,20 @@ export const registerVol = (
   house: any,
   flat: any,
   name: any,
-  age: any,
-  expirience: any,
-  phone: any
+  age: number,
+  experience: number,
+  phone: any,
+  gender: any
 ) => {
-  return API.post("/Volunteer/Register", {
+  return API.post("/volunteer/register", {
     district,
     street,
     house,
     flat,
     name,
     age,
-    expirience,
+    experience,
     phone,
+    gender
   });
 };

@@ -12,7 +12,7 @@ export function useUserAdmin() {
 
     const fetchUserAdminList = useCallback(async () => {
         try {
-            const result = await API.get<UserAdmin[]>("/Admin/User/List");
+            const result = await API.get<UserAdmin[]>("/admin/user/list");
 
             setList(result?.data || []);
         } catch (e) {
@@ -22,7 +22,7 @@ export function useUserAdmin() {
 
     const fetchUserAdminById = useCallback(async (id: string) => {
         try {
-            const result = await API.get<UserAdminAll>(`/Admin/User/Info?id=${id}`);
+            const result = await API.get<UserAdminAll>(`/admin/user/info?id=${id}`);
 
             setUserAdminAll(result?.data || null)
         } catch (e) {
@@ -33,7 +33,7 @@ export function useUserAdmin() {
     const changeUserAdmin = useCallback(
         async (userAdminUpdate: UserAdminAll) => {
             try {
-                await API.post("/Admin/User/Update", userAdminUpdate);
+                await API.post("/admin/user/update", userAdminUpdate);
                 await fetchUserAdminList();
             } catch (e) {
                 console.error(e);
@@ -45,7 +45,7 @@ export function useUserAdmin() {
     const deleteUserAdminById = useCallback(
         async (id: string) => {
             try {
-                await API.delete(`/Admin/User/Delete?id=${id}`);
+                await API.post(`/admin/user/delete?id=${id}`);
                 await fetchUserAdminList();
             } catch (e) {
                 console.error(e);

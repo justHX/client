@@ -2,7 +2,7 @@ interface BotUser {
   id: string;
   name: string;
   age: number;
-  expirience: number;
+  experience: number;
 }
 
 interface FeedbackBase {

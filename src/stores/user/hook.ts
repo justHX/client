@@ -11,7 +11,7 @@ export function useUser() {
 
   const authAdmin = useCallback(async (email: string, password: string) => {
     try {
-      await API.post("/Login", { email, password });
+      await API.post("admin/login", { email, password });
       setUserAuth(true);
       setUserRole(UserRole.ADMIN);
       localStorage.setItem("isAuth", "true");
@@ -23,7 +23,7 @@ export function useUser() {
 
   const authUser = useCallback(async (email: string, password: string) => {
     try {
-       const userId = await API.post<UserId>("/User/Login", { email, password });
+       const userId = await API.post<UserId>("/user/login", { email, password });
       setUserAuth(true);
       setUserRole(UserRole.USER);
       setIdUser(userId?.data.id || "")

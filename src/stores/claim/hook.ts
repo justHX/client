@@ -12,7 +12,7 @@ export function useClaim() {
 
   const fetchClaimList = useCallback(async (id: string) => {
     try {
-      const result = await API.get<Claim[]>(`/User/Tasks?id=${id}`);
+      const result = await API.get<Claim[]>(`/user/tasks?id=${id}`);
 
       setList(result?.data || []);
     } catch (e) {
@@ -23,7 +23,7 @@ export function useClaim() {
 
   const fetchClaimsById = useCallback(async (id: string) => {
     try {
-      const result = await API.get<ClaimAll>(`/User/Task?id=${id}`);
+      const result = await API.get<ClaimAll>(`/user/task?id=${id}`);
 
       setItem(result?.data || null);
     } catch (e) {

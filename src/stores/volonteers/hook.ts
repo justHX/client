@@ -12,7 +12,7 @@ export function useVolonteers() {
 
   const fetchVolunteersList = useCallback(async () => {
     try {
-      const result = await API.get<VolunteerShort[]>("/Admin/Volunteer/List");
+      const result = await API.get<VolunteerShort[]>("/admin/volunteer/list");
 
       setList(result?.data || []);
     } catch (e) {
@@ -24,7 +24,7 @@ export function useVolonteers() {
     try {
       const params = { params: { id } };
       const result = await API.get<VolunteerDetail>(
-        "/Admin/Volunteer/Info",
+        "/admin/volunteer/info",
         params
       );
 
@@ -37,7 +37,7 @@ export function useVolonteers() {
   const updateVolunteer = useCallback(
     async (volonteer: VolunteerDetail) => {
       try {
-        await API.post("/Admin/Volunteer/Update", volonteer);
+        await API.post("/admin/volunteer/update", volonteer);
         await fetchVolunteersList();
       } catch (e) {
         console.error(e);
@@ -49,8 +49,7 @@ export function useVolonteers() {
   const deleteVolunteer = useCallback(
     async (id: string) => {
       try {
-        const params = { params: { id } };
-        await API.post("/Admin/Volunteer/Delete", params);
+        await API.post(`/admin/volunteer/delete?id=${id}`);
         await fetchVolunteersList();
       } catch (e) {
         console.error(e);
